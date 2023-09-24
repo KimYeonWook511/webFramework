@@ -7,7 +7,7 @@
         values (#{userId}, #{userPassword}, #{userName}, #{userGender}, #{userCallNumber})
     </insert>
 
-    <select id="readUser" resultType="com.webFramework.persistence.UserVO">
+    <select id="readUser" resultType="com.webFramework.domain.UserVO">
         select * from user_info where userId = #{userId}
     </select>
 </mapper>

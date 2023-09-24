@@ -6,4 +6,8 @@
         insert into user_info (userId, userPassword, userName, userGender, userCallNumber)
         values (#{userId}, #{userPassword}, #{userName}, #{userGender}, #{userCallNumber})
     </insert>
+
+    <select id="readUser" resultType="com.webFramework.domain.UserVO">
+        select * from user_info where userId = #{userId}
+    </select>
 </mapper>
