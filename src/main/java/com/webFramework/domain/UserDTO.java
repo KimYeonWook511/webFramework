@@ -11,6 +11,7 @@ public class UserDTO {
     private String userCallNumber;
     private Date userSignDate;
     private String userAuthority;
+    private int userState;
 
     public int getUserNo() {
         return userNo;
@@ -76,6 +77,14 @@ public class UserDTO {
         this.userAuthority = userAuthority;
     }
 
+    public int getUserState() {
+        return userState;
+    }
+
+    public void setUserState(int userState) {
+        this.userState = userState;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -87,6 +96,7 @@ public class UserDTO {
                 ", userCallNumber='" + userCallNumber + '\'' +
                 ", userSignDate=" + userSignDate +
                 ", userAuthority='" + userAuthority + '\'' +
+                ", userState=" + userState +
                 '}';
     }
 }
