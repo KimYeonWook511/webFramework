@@ -25,7 +25,12 @@ public class SignupUserTest {
             userDTO.setUserName("테스트이름");
             userDTO.setUserGender("남자");
             userDTO.setUserCallNumber("01012345678");
-            userDAO.signupUser(userDTO);
+
+            if (userDAO.signupCheckId(userDTO.getUserId())) {
+                System.out.println("아이디 중복");
+            } else {
+                userDAO.signupUser(userDTO);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
