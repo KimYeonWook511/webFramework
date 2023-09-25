@@ -6,4 +6,5 @@ import com.webFramework.domain.UserVO;
 public interface UserDAO {
     public void signupUser(UserDTO userDTO) throws Exception;
     public UserVO readUser(String userId) throws Exception;
+    public boolean signupCheckId(String userId) throws Exception;
 }

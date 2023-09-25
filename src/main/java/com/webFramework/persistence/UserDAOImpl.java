@@ -22,4 +22,9 @@ public class UserDAOImpl implements UserDAO {
     public UserVO readUser(String userId) throws Exception {
         return (UserVO)sqlSession.selectOne(NAMESPACE + ".readUser", userId);
     }
+
+    @Override
+    public boolean signupCheckId(String userId) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".signupCheckId", userId);
+    }
 }

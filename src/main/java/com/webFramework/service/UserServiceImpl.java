@@ -13,8 +13,15 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    public void signupUser(UserDTO userDTO) throws Exception {
+    public boolean signupUser(UserDTO userDTO) throws Exception {
+        if (userDAO.signupCheckId(userDTO.getUserId())) {
+            // 아이디 중복
+            return true;
+        }
+
+        // 회원가입 진행
         userDAO.signupUser(userDTO);
+        return false;
     }
 
     @Override

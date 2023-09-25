@@ -10,4 +10,8 @@
     <select id="readUser" resultType="com.webFramework.domain.UserVO">
         select * from user_info where userId = #{userId}
     </select>
+
+    <select id="signupCheckId" resultType="boolean">
+        select count(*) from user_info where userId = #{userId} and userState = 1;
+    </select>
 </mapper>
