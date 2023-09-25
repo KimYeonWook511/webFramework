@@ -1,7 +1,7 @@
 package com.webFramework.user.test;
 
 import com.webFramework.domain.UserDTO;
-import com.webFramework.persistence.UserDAO;
+import com.webFramework.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,7 +14,7 @@ import javax.inject.Inject;
 
 public class SignupUserTest {
     @Inject
-    UserDAO userDAO;
+    UserService userService;
 
     @Test
     public void signupUserTest() {
@@ -26,10 +26,10 @@ public class SignupUserTest {
             userDTO.setUserGender("남자");
             userDTO.setUserCallNumber("01012345678");
 
-            if (userDAO.signupCheckId(userDTO.getUserId())) {
+            if (userService.signupUser(userDTO)) {
                 System.out.println("아이디 중복");
             } else {
-                userDAO.signupUser(userDTO);
+                System.out.println("회원가입 성공");
             }
 
         } catch (Exception e) {
