@@ -1,6 +1,7 @@
 package com.webFramework.controller;
 
 import com.webFramework.domain.UserDTO;
+import com.webFramework.domain.UserVO;
 import com.webFramework.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,5 +96,46 @@ public class UserController {
         }
 
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public void loginGET() {
+        logger.info("loginGET 실행");
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginPOST(@ModelAttribute UserDTO userDTO, RedirectAttributes rttr, HttpSession session) {
+        logger.info("loginPOST 실행");
+
+        try {
+            UserVO userVO = userService.readUser(userDTO.getUserId());
+
+            if (userVO == null) {
+                // 회원 정보 없음
+                rttr.addFlashAttribute("loginResult", -2);
+
+                return "redirect:/user/login";
+
+            } else if (!userDTO.getUserPassword().equals(userVO.getUserPassword())) {
+                // 비밀번호 불일치
+                rttr.addFlashAttribute("loginResult", -1);
+                rttr.addFlashAttribute("userId", userDTO.getUserId());
+
+                return "redirect:/user/login";
+
+            } else {
+                // 로그인 성공
+                session.setAttribute("loginVO", userVO);
+
+                rttr.addFlashAttribute("loginResult", 1);
+
+                return "redirect:/";
+            }
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+
+            return "오류페이지";
+        }
     }
 }
