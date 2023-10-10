@@ -138,4 +138,33 @@ public class UserController {
             return "오류페이지";
         }
     }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public void logoutGET(HttpServletRequest request, HttpServletResponse response) {
+        logger.info("logoutGET 실행");
+
+        UserVO vo = (UserVO)request.getSession().getAttribute("loginVO");
+
+        response.setContentType("text/html; charset=utf-8");
+        
+        try {
+            PrintWriter out = response.getWriter();
+
+            if (vo == null) {
+                // 현재 로그인 상태가 아님
+                out.println("<script>alert('현재 로그인 상태가 아닙니다.');location.href='/'</script>");
+
+            } else {
+                // 로그아웃
+                request.getSession().invalidate();
+                out.println("<script>alert('로그아웃 완료');location.href='/'</script>");
+            }
+
+            out.flush();
+
+        } catch (Exception e) {
+            // 스크립트 오류
+            logger.info(e.toString());
+        }
+    }
 }
