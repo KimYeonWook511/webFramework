@@ -74,7 +74,7 @@ public class UserController {
 
             if (chk) {
                 // 아이디 중복
-                rttr.addFlashAttribute("joinResult", "fail_id");
+                rttr.addFlashAttribute("signupResult", "fail_id");
                 rttr.addFlashAttribute("dto", userDTO);
                 return "redirect:/user/signup";
             }
@@ -87,12 +87,12 @@ public class UserController {
             // 세션생성
             HttpSession session = request.getSession();
             session.setAttribute("loginVO", userService.readUser(userDTO.getUserId()));
-            rttr.addFlashAttribute("joinResult", "success");
+            rttr.addFlashAttribute("signupResult", "success");
 
         } catch (Exception e) {
             // 세션 생성 오류
             logger.info("세션 생성중 오류");
-            rttr.addFlashAttribute("joinResult", "session_fail");
+            rttr.addFlashAttribute("signupResult", "session_fail");
         }
 
         return "redirect:/";

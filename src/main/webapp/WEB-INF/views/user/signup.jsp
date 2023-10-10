@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,8 @@
                         <div class="form-group" style="text-align: center;">
                             <input type="radio" class="btn-check" name="userGender" autocomplete="off" value="남자" id="male" checked>
                             <label class="btn btn-outline-secondary" for="male">남자</label>
-                            <input type="radio" class="btn-check" name="userGender" autocomplete="off" value="여자" id="female">
+                            <input type="radio" class="btn-check" name="userGender" autocomplete="off" value="여자" id="female"
+                                   <c:if test="${dto.userGender == '여자'}">checked</c:if>>
                             <label class="btn btn-outline-secondary" for="female">여자</label>
                         </div>
                         <br>
