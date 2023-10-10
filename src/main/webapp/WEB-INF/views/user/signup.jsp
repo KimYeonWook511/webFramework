@@ -17,6 +17,8 @@
                 <div style="padding-top: 20px;">
                     <form method="post">
                         <h3 style="text-align: center;">회원가입</h3>
+                        <br>
+                        <br>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="아이디"
                                    name="userId" maxlength="20" id="userId" pattern="^[a-zA-Z0-9]+$">
