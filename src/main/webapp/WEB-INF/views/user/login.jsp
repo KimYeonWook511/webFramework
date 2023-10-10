@@ -44,8 +44,8 @@
 
         } else if ('${loginResult}' == -1) {
             alert("비밀번호가 일치하지 않습니다.");
-            const userId = '${userId}';
-            document.getElementById("userId").value = userId;
+
+            document.getElementById("userId").value = '${userId}';
         }
     </script>
 </body>
