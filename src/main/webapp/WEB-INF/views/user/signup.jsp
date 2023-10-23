@@ -11,6 +11,7 @@
           crossorigin="anonymous">
 </head>
 <body>
+    <jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
     <div class="container-fluid text-center">
         <div class="row align-items-center">
             <div class="col-4"></div>
@@ -88,7 +89,7 @@
 
         } else if ('${signupResult}' == 'empty_userCallNumber') {
             alert("전화번호를 입력해 주세요.");
-        };
+        }
 
         document.getElementById("userId").value = '${dto.userId}';
         document.getElementById("userName").value = '${dto.userName}';

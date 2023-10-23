@@ -10,6 +10,7 @@
           crossorigin="anonymous">
 </head>
 <body>
+    <jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
     <div class="container-fluid text-center">
         <div class="row align-items-center">
             <div class="col-lg-4"></div>
