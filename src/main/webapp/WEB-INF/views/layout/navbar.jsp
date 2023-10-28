@@ -17,7 +17,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/" style="width: 150px;"></a>
+        <a class="navbar-brand" href="/" style="width: 150px; height: 50px;"></a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,10 +28,13 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-                        스터디
+                        강의
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/study/list">스터디 리스트</a></li>
+                        <li><a class="dropdown-item" href="/lecture">전체 강의</a></li>
+                        <li><a class="dropdown-item" href="/lecture/it">컴퓨터</a></li>
+                        <li><a class="dropdown-item" href="/lecture/math">수학</a></li>
+                        <li><a class="dropdown-item" href="/lecture/eng">영어</a></li>
                         <c:if test="${not empty loginVO}">
                         </c:if>
                     </ul>
@@ -59,7 +62,7 @@
                             <c:if test="${loginVO.userAuthority == 'member' }">
                                 ${loginVO.userName } 회원
                             </c:if>
-                            <c:if test="${loginVO.userAuthority == 'instructor' }">
+                            <c:if test="${loginVO.userAuthority == 'teacher' }">
                                 ${loginVO.userName } 강사
                             </c:if>
                         </a>
