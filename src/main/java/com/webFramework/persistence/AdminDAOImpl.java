@@ -29,4 +29,16 @@ public class AdminDAOImpl implements AdminDAO {
     public void createSkill(String skillName) throws Exception {
         sqlSession.insert(NAMESPACE + ".createSkill", skillName);
     }
+
+    @Override
+    public void createHierarchy(List<int[]> hierarchyList) throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+
+        for (int[] hierarchy : hierarchyList) {
+            map.put("courseNo", hierarchy[0]);
+            map.put("categoryNo", hierarchy[1]);
+            map.put("skillNo", hierarchy[2]);
+            sqlSession.insert(NAMESPACE + ".createHierarchy", map);
+        }
+    }
 }
