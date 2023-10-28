@@ -19,4 +19,9 @@ public class AdminDAOImpl implements AdminDAO {
     public void createCourse(String courseName) throws Exception {
         sqlSession.insert(NAMESPACE + ".createCourse", courseName);
     }
+
+    @Override
+    public void createCategory(String categoryName) throws Exception {
+        sqlSession.insert(NAMESPACE + ".createCategory", categoryName);
+    }
 }

@@ -16,4 +16,9 @@ public class AdminServiceImpl implements AdminService {
     public void createCourse(String courseName) throws Exception {
         adminDAO.createCourse(courseName);
     }
+
+    @Override
+    public void createCategory(String categoryName) throws Exception {
+        adminDAO.createCategory(categoryName);
+    }
 }

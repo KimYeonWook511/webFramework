@@ -7,4 +7,10 @@
         insert into course_table (courseName)
         values (#{courseName})
     </insert>
+
+    <!--  새로운 중분류 생성  -->
+    <insert id="createCategory">
+        insert into category_table (categoryName)
+        values (#{categoryName})
+    </insert>
 </mapper>
