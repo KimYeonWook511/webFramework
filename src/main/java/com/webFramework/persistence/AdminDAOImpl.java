@@ -24,4 +24,9 @@ public class AdminDAOImpl implements AdminDAO {
     public void createCategory(String categoryName) throws Exception {
         sqlSession.insert(NAMESPACE + ".createCategory", categoryName);
     }
+
+    @Override
+    public void createSkill(String skillName) throws Exception {
+        sqlSession.insert(NAMESPACE + ".createSkill", skillName);
+    }
 }

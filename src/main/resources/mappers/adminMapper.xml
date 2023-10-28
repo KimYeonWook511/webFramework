@@ -13,4 +13,10 @@
         insert into category_table (categoryName)
         values (#{categoryName})
     </insert>
+
+    <!--  새로운 소분류 생성  -->
+    <insert id="createSkill">
+        insert into skill_table (skillName)
+        values (#{skillName})
+    </insert>
 </mapper>

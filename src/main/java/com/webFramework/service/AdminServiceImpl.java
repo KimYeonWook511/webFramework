@@ -21,4 +21,9 @@ public class AdminServiceImpl implements AdminService {
     public void createCategory(String categoryName) throws Exception {
         adminDAO.createCategory(categoryName);
     }
+
+    @Override
+    public void createSkill(String skillName) throws Exception {
+        adminDAO.createSkill(skillName);
+    }
 }
