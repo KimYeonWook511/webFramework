@@ -25,4 +25,16 @@
         insert into hierarchy_table (courseNo, categoryNo, skillNo)
         values (#{courseNo}, #{categoryNo}, #{skillNo})
     </insert>
+
+    <!--  강의 정보 생성  -->
+    <insert id="createLectureInfo" useGeneratedKeys="true" keyProperty="lectureNo">
+        insert into lecture_info (lectureTeacherNo, lectureName, lectureContent)
+        values (#{lectureTeacherNo}, #{lectureName}, #{lectureContent})
+    </insert>
+
+    <!--  강의 분류(계층) 생성  -->
+    <insert id="createLectureHierarchy" parameterType="hashmap">
+        insert into lecture_hierarchy (lectureNo, hierarchyNo)
+        values (#{lectureNo}, #{hierarchyNo})
+    </insert>
 </mapper>

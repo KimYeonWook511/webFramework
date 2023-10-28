@@ -41,4 +41,20 @@ public class AdminDAOImpl implements AdminDAO {
             sqlSession.insert(NAMESPACE + ".createHierarchy", map);
         }
     }
+
+    @Override
+    public void createLectureInfo(LectureDTO lectureDTO) throws Exception {
+        sqlSession.insert(NAMESPACE + ".createLectureInfo", lectureDTO);
+    }
+
+    @Override
+    public void createLectureHierarchy(int lectureNo, int[] hierarchyNoArr) throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("lectureNo", lectureNo);
+
+        for (int hierarchyNo : hierarchyNoArr) {
+            map.put("hierarchyNo", hierarchyNo);
+            sqlSession.insert(NAMESPACE + ".createLectureHierarchy", map);
+        }
+    }
 }
