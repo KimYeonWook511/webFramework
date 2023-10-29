@@ -2,8 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.webFramework.mappers.lectureMapper">
-    <insert id="createLecture">
-        insert into lecture_info (lectureTeacherNo, lectureName, lectureContent)
-        values (#{lectureTeacherNo}, #{lectureName}, #{lectureContent})
-    </insert>
+    <!--  분류별 목록  -->
+    <select id="listLecture" resultType="com.webFramework.domain.LectureVO" parameterType="hashmap">
+        <![CDATA[
+        select *
+          from lecture_info
+          where lectureNo > 0 and lectureState = 1
+        ]]>
+        <if test="courseNo != 0">
+             and lectureNo in (select lectureNo
+                                from lecture_hierarchy
+                                where hierarchyNo in (select hierarchyNo
+                                                       from hierarchy_table
+                                                       where courseNo = #{courseNo}))
+        </if>
+           order by lectureNo desc, lectureOpenDate desc
+    </select>
 </mapper>
