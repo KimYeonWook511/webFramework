@@ -29,7 +29,7 @@ public class ListCourseTest {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("createCourse 실패");
+            System.out.println("listCourse 실패");
         }
     }
 }

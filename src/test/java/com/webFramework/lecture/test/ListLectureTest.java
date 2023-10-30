@@ -34,7 +34,7 @@ public class ListLectureTest {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("createCourse 실패");
+            System.out.println("listLecture 실패");
         }
     }
 }
