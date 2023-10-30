@@ -24,4 +24,9 @@ public class LectureDAOImpl implements LectureDAO{
 
         return sqlSession.selectList(NAMESPACE + ".listLecture", map);
     }
+
+    @Override
+    public List<Map<String, Object>> listCourse() throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listCourse");
+    }
 }

@@ -25,4 +25,8 @@
         </if>
            order by lectureNo desc, lectureOpenDate desc
     </select>
+
+    <select id="listCourse" resultType="map">
+        select * from course_table
+    </select>
 </mapper>
