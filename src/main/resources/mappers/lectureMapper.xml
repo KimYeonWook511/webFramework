@@ -18,6 +18,9 @@
                                                        <if test="categoryNo != 0">
                                                          and categoryNo = ${categoryNo}
                                                        </if>
+                                                       <if test="skillNo != 0">
+                                                         and skillNo = ${skillNo}
+                                                       </if>
                                                        ))
         </if>
            order by lectureNo desc, lectureOpenDate desc
