@@ -27,4 +27,9 @@ public class LectureServiceImpl implements LectureService {
     public List<Map<String, Object>> listCategory() throws Exception {
         return lectureDAO.listCategory();
     }
+
+    @Override
+    public List<Map<String, Object>> listSkill() throws Exception {
+        return lectureDAO.listSkill();
+    }
 }

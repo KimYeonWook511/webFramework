@@ -43,4 +43,16 @@
           on h.categoryNo = a.categoryNo
         group by courseNo, categoryNo
     </select>
+
+    <select id="listSkill" resultType="map">
+        select c.courseNo, courseName, a.categoryNo, categoryName, s.skillNo, skillName
+          from hierarchy_table as h
+        left join course_table as c
+          on h.courseNo = c.courseNo
+        left join category_table as a
+          on h.categoryNo = a.categoryNo
+        left join skill_table as s
+          on h.skillNo = s.skillNo
+        group by courseNo, categoryNo, skillNo
+    </select>
 </mapper>
