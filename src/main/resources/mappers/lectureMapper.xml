@@ -27,10 +27,20 @@
     </select>
 
     <select id="listCourse" resultType="map">
-        select * from course_table
+        select c.courseNo, courseName
+          from hierarchy_table as h
+        left join course_table as c
+          on h.courseNo = c.courseNo
+          group by courseNo
     </select>
 
     <select id="listCategory" resultType="map">
-        select * from category_table
+        select c.courseNo, courseName, a.categoryNo, categoryName
+          from hierarchy_table as h
+        left join course_table as c
+          on h.courseNo = c.courseNo
+        left join category_table as a
+          on h.categoryNo = a.categoryNo
+        group by courseNo, categoryNo
     </select>
 </mapper>
