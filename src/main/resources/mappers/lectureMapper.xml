@@ -14,7 +14,11 @@
                                 from lecture_hierarchy
                                 where hierarchyNo in (select hierarchyNo
                                                        from hierarchy_table
-                                                       where courseNo = #{courseNo}))
+                                                       where courseNo = #{courseNo}
+                                                       <if test="categoryNo != 0">
+                                                         and categoryNo = ${categoryNo}
+                                                       </if>
+                                                       ))
         </if>
            order by lectureNo desc, lectureOpenDate desc
     </select>
