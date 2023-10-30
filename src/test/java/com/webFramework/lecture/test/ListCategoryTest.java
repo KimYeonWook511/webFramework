@@ -22,8 +22,8 @@ public class ListCategoryTest {
         try {
             List<Map<String, Object>> list = lectureService.listCategory();
 
-            for (Map<String, Object> category : list) {
-                System.out.println("categoryNo: " + category.get("categoryNo") + " | categoryName: " + category.get("categoryName"));
+            for (Map<String, Object> hierarchy : list) {
+                System.out.println("courseNo: " + hierarchy.get("courseNo") + " | courseName: " + hierarchy.get("courseName") + " | categoryNo: " + hierarchy.get("categoryNo") + " | categoryName: " + hierarchy.get("categoryName"));
             }
 
         } catch (Exception e) {
