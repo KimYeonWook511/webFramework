@@ -23,8 +23,8 @@ public class ListCourseTest {
         try {
             List<Map<String, Object>> list = lectureService.listCourse();
 
-            for (Map<String, Object> course : list) {
-                System.out.println("courseNo: " + course.get("courseNo") + " | courseName: " + course.get("courseName"));
+            for (Map<String, Object> hierarchy : list) {
+                System.out.println("courseNo: " + hierarchy.get("courseNo") + " | courseName: " + hierarchy.get("courseName"));
             }
 
         } catch (Exception e) {
