@@ -16,11 +16,11 @@ public class LectureDAOImpl implements LectureDAO{
     private static final String NAMESPACE = "com.webFramework.mappers.lectureMapper";
 
     @Override
-    public List<LectureVO> listLecture(int courseNo, int categoryNo, int skillNo) throws Exception {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("courseNo", courseNo);
-        map.put("categoryNo", categoryNo);
-        map.put("skillNo", skillNo);
+    public List<LectureVO> listLecture(String courseName, String categoryName, String skillName) throws Exception {
+        Map<String, String> map = new HashMap<>();
+        map.put("courseName", courseName);
+        map.put("categoryName", categoryName);
+        map.put("skillName", skillName);
 
         return sqlSession.selectList(NAMESPACE + ".listLecture", map);
     }

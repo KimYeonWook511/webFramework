@@ -9,17 +9,23 @@
           from lecture_info
           where lectureNo > 0 and lectureState = 1
         ]]>
-        <if test="courseNo != 0">
+        <if test="courseName != null">
              and lectureNo in (select lectureNo
                                 from lecture_hierarchy
                                 where hierarchyNo in (select hierarchyNo
                                                        from hierarchy_table
-                                                       where courseNo = #{courseNo}
-                                                       <if test="categoryNo != 0">
-                                                         and categoryNo = ${categoryNo}
+                                                       where courseNo in (select courseNo
+                                                                            from course_table
+                                                                            where courseName = #{courseName})
+                                                       <if test="categoryName != null">
+                                                         and categoryNo in (select categoryNo
+                                                                              from category_table
+                                                                              where categoryName = #{categoryName})
                                                        </if>
-                                                       <if test="skillNo != 0">
-                                                         and skillNo = ${skillNo}
+                                                       <if test="skillName != null">
+                                                         and skillNo in (select skillNo
+                                                                           from skill_table
+                                                                           where skillName = #{skillName})
                                                        </if>
                                                        ))
         </if>

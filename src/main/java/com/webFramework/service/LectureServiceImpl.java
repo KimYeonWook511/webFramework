@@ -14,8 +14,8 @@ public class LectureServiceImpl implements LectureService {
     private LectureDAO lectureDAO;
 
     @Override
-    public List<LectureVO> listLecture(int courseNo, int categoryNo, int skillNo) throws Exception {
-        return lectureDAO.listLecture(courseNo, categoryNo, skillNo);
+    public List<LectureVO> listLecture(String courseName, String categoryName, String skillName) throws Exception {
+        return lectureDAO.listLecture(courseName, categoryName, skillName);
     }
 
     @Override
