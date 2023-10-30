@@ -9,4 +9,5 @@ import java.util.Map;
 public interface LectureDAO {
     public List<LectureVO> listLecture(int courseNo, int categoryNo, int skillNo) throws Exception;
     public List<Map<String, Object>> listCourse() throws Exception;
+    public List<Map<String, Object>> listCategory() throws Exception;
 }

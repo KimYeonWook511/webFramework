@@ -29,4 +29,8 @@
     <select id="listCourse" resultType="map">
         select * from course_table
     </select>
+
+    <select id="listCategory" resultType="map">
+        select * from category_table
+    </select>
 </mapper>
