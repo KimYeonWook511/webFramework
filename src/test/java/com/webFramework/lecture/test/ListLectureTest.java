@@ -23,7 +23,7 @@ public class ListLectureTest {
     public void listLectureTest() {
         int courseNo = 1;
         int categoryNo = 1;
-        int skillNo = 0;
+        int skillNo = 1;
 
         try {
             List<LectureVO> list = lectureService.listLecture(courseNo, categoryNo, skillNo);
