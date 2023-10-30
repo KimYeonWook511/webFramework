@@ -21,12 +21,12 @@ public class ListLectureTest {
 
     @Test
     public void listLectureTest() {
-        int courseNo = 1;
-        int categoryNo = 1;
-        int skillNo = 1;
+        String courseName = "IT∙프로그래밍";
+        String categoryName = "풀스택";
+        String skillName = "Java";
 
         try {
-            List<LectureVO> list = lectureService.listLecture(courseNo, categoryNo, skillNo);
+            List<LectureVO> list = lectureService.listLecture(courseName, categoryName, skillName);
 
             for (LectureVO lectureVO : list) {
                 System.out.println(lectureVO.toString());
