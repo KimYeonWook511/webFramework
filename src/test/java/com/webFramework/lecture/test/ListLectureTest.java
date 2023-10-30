@@ -21,8 +21,8 @@ public class ListLectureTest {
 
     @Test
     public void listLectureTest() {
-        int courseNo = 0;
-        int categoryNo = 0;
+        int courseNo = 1;
+        int categoryNo = 1;
         int skillNo = 0;
 
         try {
