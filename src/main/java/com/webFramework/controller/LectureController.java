@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -77,11 +79,13 @@ public class LectureController {
         try {
             List<LectureVO> lectureList = lectureService.listLecture(courseName, null, null);
 
+            if (lectureList.isEmpty()) return "redirect:/lecture";
+
             model.addAttribute("lectureList", lectureList);
 
         } catch (Exception e) {
             logger.info(e.toString());
-            return "exception 처리";
+            return "redirect:/lecture";
         }
 
         return "/lecture/main";
@@ -96,36 +100,24 @@ public class LectureController {
             List<LectureVO> lectureList = new ArrayList<>();
 
             if (skill == null) lectureList = lectureService.listLecture(courseName, categoryName, null);
-            else {
-                System.out.println(skill);
-                lectureList = lectureService.listLecture(courseName, categoryName, skill);
-            }
+            else lectureList = lectureService.listLecture(courseName, categoryName, skill);
+
+//            System.out.println(new String("\u2219"));
+//            System.out.println(new String(courseName.getBytes(StandardCharsets.UTF_16)));
+//            System.out.println(courseName.getBytes(StandardCharsets.UTF_16).toString());
+//            System.out.println(courseName.getBytes("UTF-16"));
+//            System.out.println(courseName.getBytes("UTF-16").toString());
+//            System.out.println(new String(courseName.getBytes("UTF-16")));
+//            if (lectureList.isEmpty()) return "redirect:/lecture/" + new String(courseName.getBytes(StandardCharsets.UTF_8));
+            if (lectureList.isEmpty()) return "redirect:/lecture/" + URLEncoder.encode(courseName, StandardCharsets.UTF_8);
 
             model.addAttribute("lectureList", lectureList);
 
         } catch (Exception e) {
             logger.info(e.toString());
-            return "exception 처리";
+            return "redirect:/lecture/" + courseName;
         }
 
         return "/lecture/main";
     }
-
-//    @RequestMapping(value = "/{courseName}/{categoryName}?skill={skillName}", method = RequestMethod.GET)
-//    public String skillLectureGET(@PathVariable String courseName, @PathVariable String categoryName,
-//                                     @PathVariable String skillName, Model model) {
-//        logger.info("skillLectureGET 실행");
-//
-//        try {
-//            List<LectureVO> lectureList = lectureService.listLecture(courseName, categoryName, skillName);
-//
-//            model.addAttribute("lectureList", lectureList);
-//
-//        } catch (Exception e) {
-//            logger.info(e.toString());
-//            return "exception 처리";
-//        }
-//
-//        return "/lecture/main";
-//    }
 }
