@@ -31,20 +31,22 @@ public class HierarchyInterceptor extends HandlerInterceptorAdapter {
             List<Map<String, Object>> hierarchyList = lectureService.listSkill();
 
             Map<String, Map<String, List<String>>> hierarchyMap = new HashMap<>();
+            Map<String, List<String>> innerMap;
+            String courseName;
+            String categoryName;
+            String skillName;
 
             for (Map<String,Object> hierarchy : hierarchyList) {
-                String courseName = (String)hierarchy.get("courseName");
-                String categoryName = (String)hierarchy.get("categoryName");
-                String skillName = (String)hierarchy.get("skillName");
-
-                Map<String, List<String>> innerMap = new HashMap<>();
+                courseName = (String)hierarchy.get("courseName");
+                categoryName = (String)hierarchy.get("categoryName");
+                skillName = (String)hierarchy.get("skillName");
 
                 // innerMap(Map<String, List<String>>)
-                if (hierarchyMap.containsKey(courseName)) innerMap = hierarchyMap.get(courseName);
-                else hierarchyMap.put(courseName, innerMap);
+                if (!hierarchyMap.containsKey(courseName)) hierarchyMap.put(courseName, new HashMap<String, List<String>>());
+                innerMap = hierarchyMap.get(courseName);
 
                 // skillName(List<String>)
-                if (!innerMap.containsKey(categoryName)) innerMap.put(categoryName, new ArrayList<>());
+                if (!innerMap.containsKey(categoryName)) innerMap.put(categoryName, new ArrayList<String>());
                 innerMap.get(categoryName).add(skillName);
             }
 
