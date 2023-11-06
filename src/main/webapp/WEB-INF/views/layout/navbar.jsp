@@ -5,60 +5,62 @@
 <head>
     <meta charset="UTF-8">
     <title>navbar</title>
-    <style>
-        .navbar-brand {
-            background-image: url("/resources/mainImg/logo.png");
-            background-size: cover;
-            background-position: center;
-            margin-left: 10px;
-        }
-    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="/resources/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/" style="width: 150px; height: 50px;"></a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 10px;">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">메인으로</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-                        강의
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/lecture">전체 강의</a></li>
-                        <li><a class="dropdown-item" href="/lecture/it">컴퓨터</a></li>
-                        <li><a class="dropdown-item" href="/lecture/math">수학</a></li>
-                        <li><a class="dropdown-item" href="/lecture/eng">영어</a></li>
-                        <c:if test="${not empty loginVO}">
-                        </c:if>
+<div class="wrapper">
+    <nav>
+        <input type="checkbox" id="show-search">
+        <input type="checkbox" id="show-menu">
+        <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+        <div class="content">
+            <div class="logo"><a href="#">webFramework</a></div>
+            <ul class="links">
+                <li><a href="/">메인으로</a></li>
+                <li>
+                    <a href="/lecture" class="desktop-link">강의</a>
+                    <input type="checkbox" id="show-courses">
+                    <label for="show-courses">강의</label>
+                    <ul>
+                        <c:forEach items="${hierarchyMap.keySet()}" var="courseName" varStatus="courseStatus">
+                            <li>
+                                <a href="/lecture/${courseName}" class="desktop-link">${courseName}</a>
+                                <input type="checkbox" id="show-categories-${courseStatus.count}">
+                                <label for="show-categories-${courseStatus.count}">${courseName}</label>
+                                <ul>
+                                    <c:forEach items="${hierarchyMap.get(courseName).keySet()}" var="categoryName" varStatus="categoryStatus">
+                                        <li>
+                                            <a href="/lecture/${courseName}/${categoryName}" class="desktop-link">${categoryName}</a>
+                                            <input type="checkbox" id="show-skills-${categoryStatus.count}">
+                                            <label for="show-skills-${categoryStatus.count}">${categoryName}</label>
+                                            <ul>
+                                                <c:forEach items="${hierarchyMap.get(courseName).get(categoryName)}" var="skillName">
+                                                    <li><a href="/lecture/${courseName}/${categoryName}?skill=${skillName}">${skillName}</a></li>
+                                                </c:forEach>
+                                            </ul>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </li>
-            </ul>
-            <c:if test="${empty loginVO}">
-                <ul class="navbar-nav navbar-right">
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false" style="font-weight: bold; font-size: 15px; padding-left: 20px; padding-right: 20px;">
-                            접속하기
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/user/login">로그인</a></li>
-                            <li><a class="dropdown-item" href="/user/signup">회원가입</a></li>
+                <c:if test="${empty loginVO}">
+                    <li>
+                        <a href="#" class="desktop-link">접속하기</a>
+                        <input type="checkbox" id="show-login">
+                        <label for="show-login">접속하기</label>
+                        <ul>
+                            <li><a href="/user/login">로그인</a></li>
+                            <li><a href="/user/signup">회원가입</a></li>
                         </ul>
                     </li>
-                </ul>
-            </c:if>
-            <c:if test="${not empty loginVO}">
-                <ul class="navbar-nav navbar-right">
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false" style="font-weight: bold; font-size: 15px; padding-left: 20px; padding-right: 20px;">
+                </c:if>
+                <c:if test="${not empty loginVO}">
+                    <li>
+                        <a href="#" class="desktop-link">
                             <c:if test="${loginVO.userAuthority == 'member' }">
                                 ${loginVO.userName } 회원
                             </c:if>
@@ -66,14 +68,25 @@
                                 ${loginVO.userName } 강사
                             </c:if>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/user/logout">로그아웃</a></li>
+                        <ul>
+                            <li><a href="/user/logout">로그아웃</a></li>
                         </ul>
                     </li>
-                </ul>
-            </c:if>
+                </c:if>
+            </ul>
         </div>
-    </div>
-</nav>
+        <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+        <form action="#" class="search-box">
+            <input type="text" placeholder="Type Something to Search..." required>
+            <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+        </form>
+    </nav>
+</div>
+
+<%--<div class="dummy-text">--%>
+<%--    <h2>Responsive Dropdown Menu Bar with Searchbox</h2>--%>
+<%--    <h2>using only HTML & CSS - Flexbox</h2>--%>
+<%--</div>--%>
+
 </body>
 </html>
