@@ -17,10 +17,10 @@ public class LectureDAOImpl implements LectureDAO{
 
     @Override
     public List<LectureVO> listLecture(String courseName, String categoryName, String skillName) throws Exception {
-        Map<String, String> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("courseName", courseName);
         map.put("categoryName", categoryName);
-        map.put("skillName", skillName);
+        map.put("skillName", skillName == null ? null : skillName.split(","));
 
         return sqlSession.selectList(NAMESPACE + ".listLecture", map);
     }
