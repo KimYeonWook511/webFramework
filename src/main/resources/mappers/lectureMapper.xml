@@ -55,7 +55,7 @@
     </select>
 
     <select id="listSkill" resultType="map">
-        select c.courseNo, courseName, a.categoryNo, categoryName, s.skillNo, skillName
+        select courseName, categoryName, skillName
           from hierarchy_table as h
         left join course_table as c
           on h.courseNo = c.courseNo
@@ -64,6 +64,6 @@
         left join skill_table as s
           on h.skillNo = s.skillNo
           group by courseNo, categoryNo, skillNo
-          order by 1, 3, 5
+          order by 1, 2, 3
     </select>
 </mapper>
