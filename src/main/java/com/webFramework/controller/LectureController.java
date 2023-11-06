@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -85,4 +86,46 @@ public class LectureController {
 
         return "/lecture/main";
     }
+
+    @RequestMapping(value = "/{courseName}/{categoryName}", method = RequestMethod.GET)
+    public String categoryLectureGET(@PathVariable String courseName, @PathVariable String categoryName,
+                                     String skill, Model model) {
+        logger.info("categoryLectureGET 실행");
+
+        try {
+            List<LectureVO> lectureList = new ArrayList<>();
+
+            if (skill == null) lectureList = lectureService.listLecture(courseName, categoryName, null);
+            else {
+                System.out.println(skill);
+                lectureList = lectureService.listLecture(courseName, categoryName, skill);
+            }
+
+            model.addAttribute("lectureList", lectureList);
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            return "exception 처리";
+        }
+
+        return "/lecture/main";
+    }
+
+//    @RequestMapping(value = "/{courseName}/{categoryName}?skill={skillName}", method = RequestMethod.GET)
+//    public String skillLectureGET(@PathVariable String courseName, @PathVariable String categoryName,
+//                                     @PathVariable String skillName, Model model) {
+//        logger.info("skillLectureGET 실행");
+//
+//        try {
+//            List<LectureVO> lectureList = lectureService.listLecture(courseName, categoryName, skillName);
+//
+//            model.addAttribute("lectureList", lectureList);
+//
+//        } catch (Exception e) {
+//            logger.info(e.toString());
+//            return "exception 처리";
+//        }
+//
+//        return "/lecture/main";
+//    }
 }

@@ -24,34 +24,30 @@ public class HierarchyMapTest {
         try {
             List<Map<String, Object>> list = lectureService.listSkill();
 
-            for (Map<String, Object> hierarchy : list) {
-                System.out.println("courseNo: " + hierarchy.get("courseNo") + " | courseName: " + hierarchy.get("courseName")
-                        + " | categoryNo: " + hierarchy.get("categoryNo") + " | categoryName: " + hierarchy.get("categoryName")
-                        + " | skillNo: " + hierarchy.get("skillNo") + " | skillName: " + hierarchy.get("skillName"));
-            }
-
             Map<String, Map<String, List<String>>> hierarchyMap = new HashMap<>();
+            Map<String, List<String>> innerMap;
+            String courseName;
+            String categoryName;
+            String skillName;
 
             for (Map<String,Object> m : list) {
-                String courseName = (String)m.get("courseName");
-                String categoryName = (String)m.get("categoryName");
-                String skillName = (String)m.get("skillName");
+                courseName = (String)m.get("courseName");
+                categoryName = (String)m.get("categoryName");
+                skillName = (String)m.get("skillName");
+
                 System.out.println(courseName+"|"+categoryName+"|"+skillName);
 
-                Map<String, List<String>> innerMap = new HashMap<>();
+                if (!hierarchyMap.containsKey(courseName)) hierarchyMap.put(courseName, new HashMap<String, List<String>>());
+                innerMap = hierarchyMap.get(courseName);
 
-                if (hierarchyMap.containsKey(courseName)) innerMap = hierarchyMap.get(courseName);
-                else hierarchyMap.put(courseName, innerMap);
-
-                if (!innerMap.containsKey(categoryName)) innerMap.put(categoryName, new ArrayList<>());
-
+                if (!innerMap.containsKey(categoryName)) innerMap.put(categoryName, new ArrayList<String>());
                 innerMap.get(categoryName).add(skillName);
             }
 
             System.out.println(hierarchyMap);
-            System.out.println(hierarchyMap.get("IT∙프로그래밍"));
-            System.out.println(hierarchyMap.get("IT∙프로그래밍").get("풀스택"));
-            System.out.println(hierarchyMap.get("IT∙프로그래밍").get("백엔드"));
+//            System.out.println(hierarchyMap.get("IT∙프로그래밍"));
+//            System.out.println(hierarchyMap.get("IT∙프로그래밍").get("풀스택"));
+//            System.out.println(hierarchyMap.get("IT∙프로그래밍").get("백엔드"));
 
         } catch (Exception e) {
             e.printStackTrace();
