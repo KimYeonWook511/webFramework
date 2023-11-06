@@ -163,8 +163,8 @@ nav .content .links,
     top: 0;
 }
 
-/* Responsive code start */
 @media screen and (max-width: 1250px){
+    /* Responsive code start */
     .wrapper nav{
         max-width: 100%;
         padding: 0 20px;

@@ -16,7 +16,7 @@
         <input type="checkbox" id="show-menu">
         <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
         <div class="content">
-            <div class="logo"><a href="#">webFramework</a></div>
+            <div class="logo"><a href="/">webFramework</a></div>
             <ul class="links">
                 <li><a href="/">메인으로</a></li>
                 <li>
@@ -66,6 +66,9 @@
                             </c:if>
                             <c:if test="${loginVO.userAuthority == 'teacher' }">
                                 ${loginVO.userName } 강사
+                            </c:if>
+                            <c:if test="${loginVO.userAuthority == 'admin' }">
+                                ${loginVO.userName } 관리자
                             </c:if>
                         </a>
                         <ul>
