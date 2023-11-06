@@ -63,7 +63,7 @@
           on h.categoryNo = a.categoryNo
         left join skill_table as s
           on h.skillNo = s.skillNo
-          group by courseNo, categoryNo, skillNo
+          group by courseName, categoryName, skillName
           order by 1, 2, 3
     </select>
 </mapper>
