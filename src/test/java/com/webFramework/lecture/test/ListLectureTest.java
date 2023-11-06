@@ -23,7 +23,7 @@ public class ListLectureTest {
     public void listLectureTest() {
         String courseName = "IT∙프로그래밍";
         String categoryName = "풀스택";
-        String skillName = "Java";
+        String skillName = "Java,JavaScript";
 
         try {
             List<LectureVO> list = lectureService.listLecture(courseName, categoryName, skillName);
