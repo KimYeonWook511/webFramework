@@ -6,6 +6,16 @@
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
 }
+ol, ul {
+    padding-left: 0;
+}
+a {
+    text-decoration: none;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 .main{
     padding-top: 70px;
 }
