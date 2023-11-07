@@ -71,6 +71,18 @@
                                 ${loginVO.userName } 관리자
                             </c:if>
                         </a>
+                        <input type="checkbox" id="show-user">
+                        <label for="show-user">
+                            <c:if test="${loginVO.userAuthority == 'member' }">
+                                ${loginVO.userName } 회원
+                            </c:if>
+                            <c:if test="${loginVO.userAuthority == 'teacher' }">
+                                ${loginVO.userName } 강사
+                            </c:if>
+                            <c:if test="${loginVO.userAuthority == 'admin' }">
+                                ${loginVO.userName } 관리자
+                            </c:if>
+                        </label>
                         <ul>
                             <li><a href="/user/logout">로그아웃</a></li>
                         </ul>

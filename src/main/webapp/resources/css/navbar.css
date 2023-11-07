@@ -257,6 +257,7 @@ nav .content .links,
     }
     .content .links #show-courses:checked ~ ul,
     .content .links #show-login:checked ~ ul,
+    .content .links #show-user:checked ~ ul,
     .content .links input[id^="show-categories-"]:checked ~ ul,
     .content .links input[id^="show-skills-"]:checked ~ ul{
         max-height: 100vh;
