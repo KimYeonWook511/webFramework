@@ -1,5 +1,6 @@
 package com.webFramework.persistence;
 
+import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -56,5 +57,10 @@ public class AdminDAOImpl implements AdminDAO {
             map.put("hierarchyNo", hierarchyNo);
             sqlSession.insert(NAMESPACE + ".createLectureHierarchy", map);
         }
+    }
+
+    @Override
+    public List<CourseVO> listCourseMaster() throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listCourseMaster");
     }
 }

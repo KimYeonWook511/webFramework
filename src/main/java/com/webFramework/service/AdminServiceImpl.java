@@ -1,11 +1,15 @@
 package com.webFramework.service;
 
+import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureDTO;
 import com.webFramework.persistence.AdminDAO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -40,5 +44,10 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void createLectureHierarchy(int lectureNo, int[] hierarchyNoArr) throws Exception {
         adminDAO.createLectureHierarchy(lectureNo, hierarchyNoArr);
+    }
+
+    @Override
+    public List<CourseVO> listMasterCourse() throws Exception {
+        return adminDAO.listCourseMaster();
     }
 }
