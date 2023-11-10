@@ -42,4 +42,9 @@
     <select id="listCourseMaster" resultType="com.webFramework.domain.CourseVO">
         select * from course_table;
     </select>
+
+    <!-- 중분류 마스터 테이블 리스트로 조회 -->
+    <select id="listCategoryMaster" resultType="com.webFramework.domain.CategoryVO">
+        select * from category_table order by categoryNo;
+    </select>
 </mapper>

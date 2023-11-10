@@ -1,5 +1,6 @@
 package com.webFramework.persistence;
 
+import com.webFramework.domain.CategoryVO;
 import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureDTO;
 
@@ -14,4 +15,5 @@ public interface AdminDAO {
     public void createLectureInfo(LectureDTO lectureDTO) throws Exception;
     public void createLectureHierarchy(int lectureNo, int[] hierarchyNoArr) throws Exception;
     public List<CourseVO> listCourseMaster() throws Exception;
+    public List<CategoryVO> listCategoryMaster() throws Exception;
 }

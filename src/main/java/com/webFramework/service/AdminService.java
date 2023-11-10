@@ -1,5 +1,6 @@
 package com.webFramework.service;
 
+import com.webFramework.domain.CategoryVO;
 import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureDTO;
 
@@ -14,4 +15,5 @@ public interface AdminService {
     public void createLectureInfo(LectureDTO lectureDTO) throws Exception;
     public void createLectureHierarchy(int lectureNo, int[] hierarchyNoArr) throws Exception;
     public List<CourseVO> listMasterCourse() throws Exception;
+    public List<CategoryVO> listMasterCategory() throws Exception;
 }

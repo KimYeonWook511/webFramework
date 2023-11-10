@@ -1,5 +1,6 @@
 package com.webFramework.service;
 
+import com.webFramework.domain.CategoryVO;
 import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureDTO;
 import com.webFramework.persistence.AdminDAO;
@@ -49,5 +50,10 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<CourseVO> listMasterCourse() throws Exception {
         return adminDAO.listCourseMaster();
+    }
+
+    @Override
+    public List<CategoryVO> listMasterCategory() throws Exception {
+        return adminDAO.listCategoryMaster();
     }
 }

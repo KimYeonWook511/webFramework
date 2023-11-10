@@ -1,5 +1,6 @@
 package com.webFramework.persistence;
 
+import com.webFramework.domain.CategoryVO;
 import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureDTO;
 import org.apache.ibatis.session.SqlSession;
@@ -62,5 +63,10 @@ public class AdminDAOImpl implements AdminDAO {
     @Override
     public List<CourseVO> listCourseMaster() throws Exception {
         return sqlSession.selectList(NAMESPACE + ".listCourseMaster");
+    }
+
+    @Override
+    public List<CategoryVO> listCategoryMaster() throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listCategoryMaster");
     }
 }
