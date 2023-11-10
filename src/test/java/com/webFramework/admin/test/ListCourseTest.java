@@ -26,7 +26,7 @@ public class ListCourseTest {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("createCategory 실패");
+            System.out.println("listMasterCourse 실패");
         }
     }
 }
