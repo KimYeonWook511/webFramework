@@ -20,13 +20,13 @@ public class ListCourseTest {
     @Test
     public void listCourseTest() {
         try {
-            List<CourseVO> listCourse = adminService.listMasterCourse();
+            List<CourseVO> listCourse = adminService.listCourseMaster();
 
             System.out.println(listCourse.toString());
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("listMasterCourse 실패");
+            System.out.println("listCourseMaster 실패");
         }
     }
 }

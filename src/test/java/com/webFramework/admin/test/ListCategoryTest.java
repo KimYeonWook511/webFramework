@@ -20,13 +20,13 @@ public class ListCategoryTest {
     @Test
     public void listCategoryTest() {
         try {
-            List<CategoryVO> listCategory = adminService.listMasterCategory();
+            List<CategoryVO> listCategory = adminService.listCategoryMaster();
 
             System.out.println(listCategory.toString());
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("listMasterCategory 실패");
+            System.out.println("listCategoryMaster 실패");
         }
     }
 }
