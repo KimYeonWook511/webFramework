@@ -48,12 +48,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<CourseVO> listMasterCourse() throws Exception {
+    public List<CourseVO> listCourseMaster() throws Exception {
         return adminDAO.listCourseMaster();
     }
 
     @Override
-    public List<CategoryVO> listMasterCategory() throws Exception {
+    public List<CategoryVO> listCategoryMaster() throws Exception {
         return adminDAO.listCategoryMaster();
     }
 }
