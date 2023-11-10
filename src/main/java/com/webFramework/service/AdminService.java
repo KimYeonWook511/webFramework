@@ -17,4 +17,5 @@ public interface AdminService {
     public void createLectureHierarchy(int lectureNo, int[] hierarchyNoArr) throws Exception;
     public List<CourseVO> listCourseMaster() throws Exception;
     public List<CategoryVO> listCategoryMaster() throws Exception;
+    public List<SkillVO> listSkillMaster() throws Exception;
 }

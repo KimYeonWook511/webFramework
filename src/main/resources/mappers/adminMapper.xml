@@ -47,4 +47,9 @@
     <select id="listCategoryMaster" resultType="com.webFramework.domain.CategoryVO">
         select * from category_table order by categoryNo;
     </select>
+
+    <!-- 소분류 마스터 테이블 리스트로 조회 -->
+    <select id="listSkillMaster" resultType="com.webFramework.domain.SkillVO">
+        select * from skill_table order by skillNo;
+    </select>
 </mapper>

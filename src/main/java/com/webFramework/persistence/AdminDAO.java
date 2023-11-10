@@ -3,6 +3,7 @@ package com.webFramework.persistence;
 import com.webFramework.domain.CategoryVO;
 import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureDTO;
+import com.webFramework.domain.SkillVO;
 
 import java.util.List;
 import java.util.Map;
@@ -16,4 +17,5 @@ public interface AdminDAO {
     public void createLectureHierarchy(int lectureNo, int[] hierarchyNoArr) throws Exception;
     public List<CourseVO> listCourseMaster() throws Exception;
     public List<CategoryVO> listCategoryMaster() throws Exception;
+    public List<SkillVO> listSkillMaster() throws Exception;
 }

@@ -3,6 +3,7 @@ package com.webFramework.service;
 import com.webFramework.domain.CategoryVO;
 import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureDTO;
+import com.webFramework.domain.SkillVO;
 import com.webFramework.persistence.AdminDAO;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +56,10 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<CategoryVO> listCategoryMaster() throws Exception {
         return adminDAO.listCategoryMaster();
+    }
+
+    @Override
+    public List<SkillVO> listSkillMaster() throws Exception {
+        return adminDAO.listSkillMaster();
     }
 }
