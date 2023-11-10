@@ -13,12 +13,12 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/**/root-context.xml"})
 
-public class ListCategoryTest {
+public class ListCategoryMasterTest {
     @Inject
     AdminService adminService;
 
     @Test
-    public void listCategoryTest() {
+    public void listCategoryMasterTest() {
         try {
             List<CategoryVO> listCategory = adminService.listCategoryMaster();
 
