@@ -18,4 +18,8 @@ public interface AdminService {
     public List<CourseVO> listCourseMaster() throws Exception;
     public List<CategoryVO> listCategoryMaster() throws Exception;
     public List<SkillVO> listSkillMaster() throws Exception;
+    public boolean checkCourse(int courseNo) throws Exception;
+    public boolean checkCategory(int categoryNo) throws Exception;
+    public boolean checkSkill(int skillNo) throws Exception;
+    public boolean checkHierarchy(int courseNo, int categoryNo, int skillNo) throws Exception;
 }

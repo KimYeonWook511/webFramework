@@ -8,7 +8,9 @@ import com.webFramework.persistence.AdminDAO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -32,7 +34,12 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void createHierarchy(int courseNo, int categoryNo, int skillNo) throws Exception {
-        adminDAO.createHierarchy(courseNo, categoryNo, skillNo);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("courseNo", courseNo);
+        map.put("categoryNo", categoryNo);
+        map.put("skillNo", skillNo);
+
+        adminDAO.createHierarchy(map);
     }
 
     @Override
@@ -58,5 +65,30 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<SkillVO> listSkillMaster() throws Exception {
         return adminDAO.listSkillMaster();
+    }
+
+    @Override
+    public boolean checkCourse(int courseNo) throws Exception {
+        return adminDAO.checkCourse(courseNo);
+    }
+
+    @Override
+    public boolean checkCategory(int categoryNo) throws Exception {
+        return adminDAO.checkCategory(categoryNo);
+    }
+
+    @Override
+    public boolean checkSkill(int skillNo) throws Exception {
+        return adminDAO.checkSkill(skillNo);
+    }
+
+    @Override
+    public boolean checkHierarchy(int courseNo, int categoryNo, int skillNo) throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("courseNo", courseNo);
+        map.put("categoryNo", categoryNo);
+        map.put("skillNo", skillNo);
+
+        return adminDAO.checkHierarchy(map);
     }
 }

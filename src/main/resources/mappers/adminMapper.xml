@@ -52,4 +52,24 @@
     <select id="listSkillMaster" resultType="com.webFramework.domain.SkillVO">
         select * from skill_table order by skillNo;
     </select>
+
+    <!-- 대분류 존재 여부 -->
+    <select id="checkCourse" resultType="boolean">
+        select count(*) from course_table where courseNo = #{courseNo}
+    </select>
+
+    <!-- 중분류 존재 여부 -->
+    <select id="checkCategory" resultType="boolean">
+        select count(*) from category_table where categoryNo = #{categoryNo}
+    </select>
+
+    <!-- 소분류 존재 여부 -->
+    <select id="checkSkill" resultType="boolean">
+        select count(*) from skill_table where skillNo = #{skillNo}
+    </select>
+
+    <!-- 분류 계층 존재 여부 -->
+    <select id="checkHierarchy" resultType="boolean">
+        select count(*) from hierarchy_table where courseNo = #{courseNo} and categoryNo = #{categoryNo} and skillNo = #{skillNo}
+    </select>
 </mapper>

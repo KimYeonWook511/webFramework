@@ -34,13 +34,8 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
     @Override
-    public void createHierarchy(int courseNo, int categoryNo, int skillNo) throws Exception {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("courseNo", courseNo);
-        map.put("categoryNo", categoryNo);
-        map.put("skillNo", skillNo);
-
-        sqlSession.insert(NAMESPACE + ".createHierarchy", map);
+    public void createHierarchy(Map<String, Integer> hierarchyMap) throws Exception {
+        sqlSession.insert(NAMESPACE + ".createHierarchy", hierarchyMap);
     }
 
     @Override
@@ -72,5 +67,25 @@ public class AdminDAOImpl implements AdminDAO {
     @Override
     public List<SkillVO> listSkillMaster() throws Exception {
         return sqlSession.selectList(NAMESPACE + ".listSkillMaster");
+    }
+
+    @Override
+    public boolean checkCourse(int courseNo) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".checkCourse", courseNo);
+    }
+
+    @Override
+    public boolean checkCategory(int categoryNo) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".checkCategory", categoryNo);
+    }
+
+    @Override
+    public boolean checkSkill(int skillNo) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".checkSkill", skillNo);
+    }
+
+    @Override
+    public boolean checkHierarchy(Map<String, Integer> hierarchyMap) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".checkHierarchy", hierarchyMap);
     }
 }
