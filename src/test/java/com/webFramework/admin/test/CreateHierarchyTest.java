@@ -19,13 +19,27 @@ public class CreateHierarchyTest {
 
     @Test
     public void createHierarchy() {
-        List<int[]> list = new ArrayList<>();
-
-        // [0] => courseNo / [1] => categoryNo / [2] => skillNo
-        list.add(new int[]{1, 1, 1});
+        int courseNo = 1;
+        int categoryNo = 1;
+        int skillNo = 1;
 
         try {
-            adminService.createHierarchy(list);
+            if (!adminService.checkCourse(courseNo)) {
+                System.out.println("대분류 없음");
+
+            } else if (!adminService.checkCategory(categoryNo)) {
+                System.out.println("중분류 없음");
+
+            } else if (!adminService.checkSkill(skillNo)) {
+                System.out.println("소분류 없음");
+
+            } else if (adminService.checkHierarchy(courseNo, categoryNo, skillNo)) {
+                System.out.println("분류 계층 존재");
+
+            } else {
+                adminService.createHierarchy(courseNo, categoryNo, skillNo);
+                System.out.println("분류 계층 생성 완료");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
