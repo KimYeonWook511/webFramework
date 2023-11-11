@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>분류 등록</title>
+    <title>분류 추가</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
@@ -16,12 +16,12 @@
     <jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
     <div class="main">
         <div class="container">
-            <form method="post" action="/admin/createLecture" class="hierarchy">
+            <form method="post" action="/admin/createHierarchy" class="hierarchy">
                 <div class="hierarchy-courses">
                     <div class="course-title">대분류</div>
                     <div class="course-data">
                     <c:forEach items="${courseList}" var="courseVO">
-                        <input class="btn-check" type="radio" autocomplete="off" name="courses" value="${courseVO.courseNo}" id="${courseVO.courseName}">
+                        <input class="btn-check" type="radio" autocomplete="off" name="courseNo" value="${courseVO.courseNo}" id="${courseVO.courseName}">
                         <label class="btn btn-outline-secondary" for="${courseVO.courseName}">${courseVO.courseName}</label>
                     </c:forEach>
                     </div>
@@ -30,7 +30,7 @@
                     <div class="category-title">중분류</div>
                     <div class="category-data">
                     <c:forEach items="${categoryList}" var="categoryVO">
-                        <input class="btn-check" type="radio" autocomplete="off" name="categories" value="${categoryVO.categoryNo}" id="${categoryVO.categoryName}">
+                        <input class="btn-check" type="radio" autocomplete="off" name="categoryNo" value="${categoryVO.categoryNo}" id="${categoryVO.categoryName}">
                         <label class="btn btn-outline-secondary" for="${categoryVO.categoryName}">${categoryVO.categoryName}</label>
                     </c:forEach>
                     </div>
@@ -39,7 +39,7 @@
                     <div class="skill-title">소분류</div>
                     <div class="skill-data">
                     <c:forEach items="${skillList}" var="skillVO" varStatus="skillStatus">
-                        <input class="btn-check" type="radio" autocomplete="off" name="skills" value="${skillVO.skillNo}" id="${skillVO.skillName}">
+                        <input class="btn-check" type="radio" autocomplete="off" name="skillNo" value="${skillVO.skillNo}" id="${skillVO.skillName}">
                         <label class="btn btn-outline-secondary" for="${skillVO.skillName}">${skillVO.skillName}</label>
                     </c:forEach>
                     </div>
@@ -50,4 +50,34 @@
 <%--            </div>--%>
         </div>
     </div>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+            }
+        }, true);
+
+        if ('${errorCode}' == '1') {
+            alert("실패: 대분류 값이 잘못되었습니다.");
+
+        } else if ('${errorCode}' == '2') {
+            alert("실패: 중분류 값이 잘못되었습니다.");
+
+        } else if ('${errorCode}' == '3') {
+            alert("실패: 소분류 값이 잘못되었습니다.");
+
+        } else if ('${errorCode}' == '4') {
+            alert("실패: 이미 존재하는 분류 계층입니다.");
+
+        } else if ('${errorCode}' == '0') {
+            alert("성공: 분류 계층을 추가하였습니다.");
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if ('${courseNo}' != '') document.querySelector('input[name="courseNo"][value="${courseNo}"]').checked = true;
+            if ('${categoryNo}' != '') document.querySelector('input[name="categoryNo"][value="${categoryNo}"]').checked = true;
+            if ('${skillNo}' != '') document.querySelector('input[name="skillNo"][value="${skillNo}"]').checked = true;
+        });
+    </script>
 </body>
+</html>
