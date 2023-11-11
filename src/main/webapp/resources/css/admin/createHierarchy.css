@@ -1,0 +1,83 @@
+.container {
+    max-width: calc(100% - 300px);
+    display: grid;
+    grid-template-rows: auto 500px;
+    column-gap: 20px;
+    row-gap: 30px;
+    margin: 0 auto;
+}
+
+.hierarchy {
+    display: grid;
+    grid-template-areas: "hierarchy-courses"
+                         "hierarchy-categories"
+                         "hierarchy-skills"
+                         "hierarchy-btn";
+    grid-template-rows: auto auto auto 50px;
+    row-gap: 30px;
+}
+
+.hierarchy-courses {
+    display: grid;
+    grid-template-areas: "course-title"
+                         "course-data";
+    grid-template-rows: 60px auto;
+    background-color: beige;
+}
+
+.course-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.course-data > label {
+    margin: 8px 4px;
+}
+
+.hierarchy-categories {
+    display: grid;
+    grid-template-areas: "category-title"
+                         "category-data";
+    grid-template-rows: 60px auto;
+    background-color: beige;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.category-data > label {
+    margin: 8px 4px;
+}
+
+.hierarchy-skills {
+    display: grid;
+    grid-template-areas: "skill-title"
+                         "skill-data";
+    grid-template-rows: 60px auto;
+    background-color: beige;
+}
+
+.skill-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.skill-data > label {
+    margin: 8px 4px;
+}
+
+.hierarchy-btn {
+}
+
+.hierarchyTemp {
+    display: grid;
+    background-color: antiquewhite;
+}
