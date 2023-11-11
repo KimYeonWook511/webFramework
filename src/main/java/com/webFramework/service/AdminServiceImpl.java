@@ -8,10 +8,7 @@ import com.webFramework.persistence.AdminDAO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -34,8 +31,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void createHierarchy(List<int[]> hierarchyList) throws Exception {
-        adminDAO.createHierarchy(hierarchyList);
+    public void createHierarchy(int courseNo, int categoryNo, int skillNo) throws Exception {
+        adminDAO.createHierarchy(courseNo, categoryNo, skillNo);
     }
 
     @Override

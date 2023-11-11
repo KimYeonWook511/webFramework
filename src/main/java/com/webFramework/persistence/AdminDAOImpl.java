@@ -34,15 +34,13 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
     @Override
-    public void createHierarchy(List<int[]> hierarchyList) throws Exception {
+    public void createHierarchy(int courseNo, int categoryNo, int skillNo) throws Exception {
         Map<String, Integer> map = new HashMap<>();
+        map.put("courseNo", courseNo);
+        map.put("categoryNo", categoryNo);
+        map.put("skillNo", skillNo);
 
-        for (int[] hierarchy : hierarchyList) {
-            map.put("courseNo", hierarchy[0]);
-            map.put("categoryNo", hierarchy[1]);
-            map.put("skillNo", hierarchy[2]);
-            sqlSession.insert(NAMESPACE + ".createHierarchy", map);
-        }
+        sqlSession.insert(NAMESPACE + ".createHierarchy", map);
     }
 
     @Override
