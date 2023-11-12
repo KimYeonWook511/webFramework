@@ -22,7 +22,7 @@ public class HierarchyMapTest {
     @Test
     public void hierarchyMapTest() {
         try {
-            List<Map<String, Object>> list = lectureService.listSkill();
+            List<Map<String, Object>> list = lectureService.listHierarchy();
 
             Map<String, Map<String, List<String>>> hierarchyMap = new HashMap<>();
             Map<String, List<String>> innerMap;

@@ -13,14 +13,14 @@ import java.util.Map;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/**/root-context.xml"})
 
-public class ListSkillTest {
+public class ListHierarchyTest {
     @Inject
     LectureService lectureService;
 
     @Test
-    public void listSkillTest() {
+    public void listHierarchyTest() {
         try {
-            List<Map<String, Object>> list = lectureService.listSkill();
+            List<Map<String, Object>> list = lectureService.listHierarchy();
 
             for (Map<String, Object> hierarchy : list) {
                 System.out.println("courseNo: " + hierarchy.get("courseNo") + " | courseName: " + hierarchy.get("courseName")
@@ -30,7 +30,7 @@ public class ListSkillTest {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("listSkill 실패");
+            System.out.println("listHierarchy 실패");
         }
     }
 }
