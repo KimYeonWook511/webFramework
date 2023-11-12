@@ -28,7 +28,7 @@ public class HierarchyInterceptor extends HandlerInterceptorAdapter {
         HttpSession session = request.getSession();
 
         if (session.getAttribute("hierarchyMap") == null) {
-            List<Map<String, Object>> hierarchyList = lectureService.listSkill();
+            List<Map<String, Object>> hierarchyList = lectureService.listHierarchy();
 
             Map<String, Map<String, List<String>>> hierarchyMap = new HashMap<>();
             Map<String, List<String>> innerMap;

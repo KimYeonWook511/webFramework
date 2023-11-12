@@ -10,5 +10,5 @@ public interface LectureDAO {
     public List<LectureVO> listLecture(String courseName, String categoryName, String skillName) throws Exception;
     public List<Map<String, Object>> listCourse() throws Exception;
     public List<Map<String, Object>> listCategory() throws Exception;
-    public List<Map<String, Object>> listSkill() throws Exception;
+    public List<Map<String, Object>> listHierarchy() throws Exception;
 }

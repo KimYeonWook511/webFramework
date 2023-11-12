@@ -36,7 +36,7 @@ public class LectureDAOImpl implements LectureDAO{
     }
 
     @Override
-    public List<Map<String, Object>> listSkill() throws Exception {
-        return sqlSession.selectList(NAMESPACE + ".listSkill");
+    public List<Map<String, Object>> listHierarchy() throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listHierarchy");
     }
 }

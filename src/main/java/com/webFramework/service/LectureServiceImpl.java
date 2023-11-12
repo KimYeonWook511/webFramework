@@ -29,7 +29,7 @@ public class LectureServiceImpl implements LectureService {
     }
 
     @Override
-    public List<Map<String, Object>> listSkill() throws Exception {
-        return lectureDAO.listSkill();
+    public List<Map<String, Object>> listHierarchy() throws Exception {
+        return lectureDAO.listHierarchy();
     }
 }

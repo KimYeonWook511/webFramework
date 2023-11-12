@@ -54,7 +54,7 @@
           order by 1, 3
     </select>
 
-    <select id="listSkill" resultType="map">
+    <select id="listHierarchy" resultType="map">
         select courseName, categoryName, skillName
           from hierarchy_table as h
         left join course_table as c
