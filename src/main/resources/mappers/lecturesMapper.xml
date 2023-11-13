@@ -4,11 +4,9 @@
 <mapper namespace="com.webFramework.mappers.lecturesMapper">
     <!--  분류별 목록  -->
     <select id="listLecture" resultType="com.webFramework.domain.LectureVO" parameterType="hashmap">
-        <![CDATA[
         select *
           from lecture_info
           where lectureNo > 0 and lectureState = 1
-        ]]>
         <if test="courseName != null">
             and lectureNo in (select lectureNo
                                 from lecture_hierarchy
