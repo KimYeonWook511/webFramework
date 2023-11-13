@@ -30,4 +30,12 @@
         </interceptor>
     </interceptors>
 
+    <beans:bean id="adminInterceptor" class="com.webFramework.interceptor.AdminInterceptor" />
+    <interceptors>
+        <interceptor>
+            <mapping path="/admin/**"/>
+            <beans:ref bean="adminInterceptor"/>
+        </interceptor>
+    </interceptors>
+
 </beans:beans>
