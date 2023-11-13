@@ -10,4 +10,5 @@ public interface UserDAO {
     public UserVO readUser(String userId) throws Exception;
     public boolean signupCheckId(String userId) throws Exception;
     public Map<Integer, UserVO> listTeacher() throws Exception;
+    public UserVO readTeacher(int lectureTeacherNo) throws Exception;
 }

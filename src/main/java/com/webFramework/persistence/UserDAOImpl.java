@@ -43,4 +43,9 @@ public class UserDAOImpl implements UserDAO {
 
         return mapTeacher;
     }
+
+    @Override
+    public UserVO readTeacher(int lectureTeacherNo) throws Exception {
+        return (UserVO)sqlSession.selectOne(NAMESPACE + ".readTeacher", lectureTeacherNo);
+    }
 }

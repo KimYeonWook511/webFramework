@@ -20,4 +20,10 @@
           from user_info
           where userAuthority = "teacher" and userState = 1;
     </select>
+
+    <select id="readTeacher" resultType="com.webFramework.domain.UserVO">
+        select userNo, userId, userName, userGender, userCallNumber
+          from user_info
+          where userNo = #{lectureTeacherNo};
+    </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.webFramework.service;
 
 import com.webFramework.domain.LectureVO;
 
+import java.util.Map;
+
 public interface LectureService {
-    public LectureVO readLecture(String lectureName) throws Exception;
+    public Map<String, Object> readLecture(String lectureName) throws Exception;
 }
