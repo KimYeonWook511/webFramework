@@ -1,6 +1,6 @@
-package com.webFramework.lecture.test;
+package com.webFramework.lectures.test;
 
-import com.webFramework.service.LectureService;
+import com.webFramework.service.LecturesService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,17 +15,17 @@ import java.util.Map;
 
 public class ListHierarchyTest {
     @Inject
-    LectureService lectureService;
+    LecturesService lecturesService;
 
     @Test
     public void listHierarchyTest() {
         try {
-            List<Map<String, Object>> list = lectureService.listHierarchy();
+            List<Map<String, Object>> list = lecturesService.listHierarchy();
 
             for (Map<String, Object> hierarchy : list) {
-                System.out.println("courseNo: " + hierarchy.get("courseNo") + " | courseName: " + hierarchy.get("courseName")
-                        + " | categoryNo: " + hierarchy.get("categoryNo") + " | categoryName: " + hierarchy.get("categoryName")
-                        + " | skillNo: " + hierarchy.get("skillNo") + " | skillName: " + hierarchy.get("skillName"));
+                System.out.println("courseName: " + hierarchy.get("courseName")
+                        + " | categoryName: " + hierarchy.get("categoryName")
+                        + " | skillName: " + hierarchy.get("skillName"));
             }
 
         } catch (Exception e) {

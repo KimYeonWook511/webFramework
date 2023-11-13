@@ -131,4 +131,31 @@ public class AdminController {
             return "exception 처리";
         }
     }
+
+    @RequestMapping(value = "/createLecture", method = RequestMethod.GET)
+    public void createLectureGET() {
+        logger.info("createLectureGET 실행");
+    }
+
+    @RequestMapping(value = "/createLecture", method = RequestMethod.POST)
+    public String createLecturePOST(int[] courses, int[] categories, int[] skills) {
+        logger.info("createLecturePOST 실행");
+
+        System.out.println("courses : ");
+        for (int courseNo : courses) {
+            System.out.println(courseNo + " ");
+        }
+
+        System.out.println("categories : ");
+        for (int categoryNo : categories) {
+            System.out.println(categoryNo + " ");
+        }
+
+        System.out.println("skills : ");
+        for (int skillNo : skills) {
+            System.out.println(skillNo + " ");
+        }
+
+        return "/lecture/main";
+    }
 }

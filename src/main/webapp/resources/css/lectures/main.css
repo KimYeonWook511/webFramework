@@ -1,0 +1,101 @@
+.container {
+    max-width: calc(100% - 300px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 300px;
+    column-gap: 20px;
+    row-gap: 30px;
+    border: 1px solid black;
+    background-color: #323c4e;
+    margin: 0 auto;
+}
+
+.lecture {
+    background-color: white;
+    /*border: 3px solid black;*/
+    display: grid;
+    grid-template-rows: 150px 50px 50px 50px;
+    grid-template-areas: "lecture-img"
+                         "lecture-title"
+                         "lecture-sub1"
+                         "lecture-sub2";
+}
+
+.lecture:visited {
+    color : black;
+}
+
+.lecture-img {
+    grid-area: lecture-img;
+    border: 1px solid blue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.lecture-title {
+    grid-area: lecture-title;
+    border: 1px solid blue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.lecture-sub1 {
+    grid-area: lecture-sub1;
+    border: 1px solid blue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.lecture-sub2 {
+    grid-area: lecture-sub2;
+    border: 1px solid blue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.lecture:hover > .lecture-content {
+    z-index: 1;
+    opacity: 0.80;
+    background-color: black;
+    color: whitesmoke;
+    transition: all 0.3s ease;
+    /*visibility: visible;*/
+}
+
+.lecture-content {
+    grid-area: 1 / 1 / 5 / 1;
+    border: 1px solid black;
+    z-index: -1;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+    /*visibility: hidden;*/
+}
+
+/* Responsive code start */
+@media screen and (max-width: 1250px){
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .container {
+        grid-template-columns: 1fr 1fr;
+    }
+}

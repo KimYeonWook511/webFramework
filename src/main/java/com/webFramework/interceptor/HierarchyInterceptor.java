@@ -1,6 +1,6 @@
 package com.webFramework.interceptor;
 
-import com.webFramework.service.LectureService;
+import com.webFramework.service.LecturesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -18,7 +18,7 @@ public class HierarchyInterceptor extends HandlerInterceptorAdapter {
     private static final Logger logger = LoggerFactory.getLogger(HierarchyInterceptor.class);
 
     @Inject
-    LectureService lectureService;
+    LecturesService lecturesService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
@@ -28,7 +28,7 @@ public class HierarchyInterceptor extends HandlerInterceptorAdapter {
         HttpSession session = request.getSession();
 
         if (session.getAttribute("hierarchyMap") == null) {
-            List<Map<String, Object>> hierarchyList = lectureService.listHierarchy();
+            List<Map<String, Object>> hierarchyList = lecturesService.listHierarchy();
 
             Map<String, Map<String, List<String>>> hierarchyMap = new HashMap<>();
             Map<String, List<String>> innerMap;

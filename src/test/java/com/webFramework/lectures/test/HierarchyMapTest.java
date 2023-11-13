@@ -1,6 +1,6 @@
-package com.webFramework.lecture.test;
+package com.webFramework.lectures.test;
 
-import com.webFramework.service.LectureService;
+import com.webFramework.service.LecturesService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,12 +17,12 @@ import java.util.Map;
 
 public class HierarchyMapTest {
     @Inject
-    LectureService lectureService;
+    LecturesService lecturesService;
 
     @Test
     public void hierarchyMapTest() {
         try {
-            List<Map<String, Object>> list = lectureService.listHierarchy();
+            List<Map<String, Object>> list = lecturesService.listHierarchy();
 
             Map<String, Map<String, List<String>>> hierarchyMap = new HashMap<>();
             Map<String, List<String>> innerMap;

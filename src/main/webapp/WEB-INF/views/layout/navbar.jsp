@@ -20,24 +20,24 @@
             <ul class="links">
                 <li><a href="/">메인으로</a></li>
                 <li>
-                    <a href="/lecture" class="desktop-link">강의</a>
+                    <a href="/lectures" class="desktop-link">강의</a>
                     <input type="checkbox" id="show-courses">
                     <label for="show-courses">강의</label>
                     <ul>
                         <c:forEach items="${hierarchyMap.keySet()}" var="courseName" varStatus="courseStatus">
                             <li>
-                                <a href="/lecture/${courseName}" class="desktop-link">${courseName}</a>
+                                <a href="/lectures/${courseName}" class="desktop-link">${courseName}</a>
                                 <input type="checkbox" id="show-categories-${courseStatus.count}">
                                 <label for="show-categories-${courseStatus.count}">${courseName}</label>
                                 <ul>
                                     <c:forEach items="${hierarchyMap.get(courseName).keySet()}" var="categoryName" varStatus="categoryStatus">
                                         <li>
-                                            <a href="/lecture/${courseName}/${categoryName}" class="desktop-link">${categoryName}</a>
+                                            <a href="/lectures/${courseName}/${categoryName}" class="desktop-link">${categoryName}</a>
                                             <input type="checkbox" id="show-skills-${categoryStatus.count}">
                                             <label for="show-skills-${categoryStatus.count}">${categoryName}</label>
                                             <ul>
                                                 <c:forEach items="${hierarchyMap.get(courseName).get(categoryName)}" var="skillName">
-                                                    <li><a href="/lecture/${courseName}/${categoryName}?skill=${skillName}">${skillName}</a></li>
+                                                    <li><a href="/lectures/${courseName}/${categoryName}?skill=${skillName}">${skillName}</a></li>
                                                 </c:forEach>
                                             </ul>
                                         </li>

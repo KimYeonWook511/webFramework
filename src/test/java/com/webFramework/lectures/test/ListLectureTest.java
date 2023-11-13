@@ -1,8 +1,8 @@
-package com.webFramework.lecture.test;
+package com.webFramework.lectures.test;
 
 import com.webFramework.domain.LectureVO;
 import com.webFramework.domain.UserVO;
-import com.webFramework.service.LectureService;
+import com.webFramework.service.LecturesService;
 import com.webFramework.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.inject.Inject;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +18,7 @@ import java.util.Map;
 
 public class ListLectureTest {
     @Inject
-    LectureService lectureService;
+    LecturesService lecturesService;
 
     @Inject
     UserService userService;
@@ -31,7 +30,7 @@ public class ListLectureTest {
         String skillName = "Java,JavaScript";
 
         try {
-            List<LectureVO> list = lectureService.listLecture(courseName, categoryName, skillName);
+            List<LectureVO> list = lecturesService.listLecture(courseName, categoryName, skillName);
             Map<Integer, UserVO> mapTeacher = userService.mapTeacher();
 
             for (LectureVO lectureVO : list) {
