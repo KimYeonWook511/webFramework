@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.inject.Inject;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/lecture")
@@ -20,19 +21,20 @@ public class LectureController {
     @Inject
     LectureService lectureService;
 
-    @RequestMapping(value = "/${lectureName}")
+    @RequestMapping(value = "/{lectureName}")
     public String mainLectureGET(@PathVariable String lectureName, Model model) {
         logger.info("mainLectureGET 실행");
 
         try {
-            LectureVO lectureVO = lectureService.readLecture(lectureName);
+            Map<String, Object> mapLecture = lectureService.readLecture(lectureName);
 
-            if (lectureVO == null) {
+            if (mapLecture.get("lectureVO") == null) {
                 logger.info("페이지 찾을 수 없음"); // lectureName에 해당되는 강의 존재하지 않음
                 return "exception 처리";
             }
 
-            model.addAttribute("lectureVO", lectureVO);
+            model.addAttribute("lectureVO", mapLecture.get("lectureVO"));
+            model.addAttribute("teacherVO", mapLecture.get("teacherVO"));
 
         } catch (Exception e) {
             logger.info(e.toString());

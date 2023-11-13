@@ -10,8 +10,7 @@
 <body>
     <jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
     <div class="main">
-        <h2>/lecture/main.jsp</h2><br>
-        <h4>@PathVariable 테스트</h4>
+        <h2>/lectures/main.jsp</h2><br>
         <br>
         ---------------------------------------------------------
         <div class="container">
@@ -24,9 +23,6 @@
                     <div class="lecture-content">강의설명: ${lectureVO.lectureContent}</div>
                 </a>
             </c:forEach>
-            <div class="lecture"></div>
-            <div class="lecture"></div>
-            <div class="lecture"></div>
         </div>
     </div>
 </body>

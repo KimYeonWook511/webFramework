@@ -5,8 +5,8 @@
     grid-template-rows: 300px;
     column-gap: 20px;
     row-gap: 30px;
-    border: 1px solid black;
-    background-color: #323c4e;
+    /*border: 1px solid blue;*/
+    /*background-color: #323c4e;*/
     margin: 0 auto;
 }
 
@@ -19,15 +19,16 @@
                          "lecture-title"
                          "lecture-sub1"
                          "lecture-sub2";
+    color: black;
 }
 
 .lecture:visited {
-    color : black;
+    color: black;
 }
 
 .lecture-img {
     grid-area: lecture-img;
-    border: 1px solid blue;
+    border: 1px solid black;
     width: 100%;
     height: 100%;
     display: flex;
@@ -37,7 +38,7 @@
 
 .lecture-title {
     grid-area: lecture-title;
-    border: 1px solid blue;
+    border: 1px solid black;
     width: 100%;
     height: 100%;
     display: flex;
@@ -47,7 +48,7 @@
 
 .lecture-sub1 {
     grid-area: lecture-sub1;
-    border: 1px solid blue;
+    border: 1px solid black;
     width: 100%;
     height: 100%;
     display: flex;
@@ -57,7 +58,7 @@
 
 .lecture-sub2 {
     grid-area: lecture-sub2;
-    border: 1px solid blue;
+    border: 1px solid black;
     width: 100%;
     height: 100%;
     display: flex;
