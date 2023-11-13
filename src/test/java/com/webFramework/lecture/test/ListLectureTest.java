@@ -1,7 +1,9 @@
 package com.webFramework.lecture.test;
 
 import com.webFramework.domain.LectureVO;
+import com.webFramework.domain.UserVO;
 import com.webFramework.service.LectureService;
+import com.webFramework.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,6 +21,9 @@ public class ListLectureTest {
     @Inject
     LectureService lectureService;
 
+    @Inject
+    UserService userService;
+
     @Test
     public void listLectureTest() {
         String courseName = "IT∙프로그래밍";
@@ -27,9 +32,10 @@ public class ListLectureTest {
 
         try {
             List<LectureVO> list = lectureService.listLecture(courseName, categoryName, skillName);
+            Map<Integer, UserVO> mapTeacher = userService.mapTeacher();
 
             for (LectureVO lectureVO : list) {
-                System.out.println(lectureVO.toString());
+                System.out.println(mapTeacher.get(lectureVO.getLectureTeacherNo()).getUserName() + ": " + lectureVO.toString());
             }
 
         } catch (Exception e) {
