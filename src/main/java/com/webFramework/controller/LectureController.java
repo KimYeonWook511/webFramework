@@ -1,7 +1,9 @@
 package com.webFramework.controller;
 
 import com.webFramework.domain.LectureVO;
+import com.webFramework.domain.UserVO;
 import com.webFramework.service.LectureService;
+import com.webFramework.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,9 @@ public class LectureController {
 
     @Inject
     LectureService lectureService;
+
+    @Inject
+    UserService userService;
 
     @RequestMapping(value = "/createLecture", method = RequestMethod.GET)
     public void createLectureGET() {
@@ -61,8 +66,10 @@ public class LectureController {
 
         try {
             List<LectureVO> lectureList = lectureService.listLecture(null, null, null);
+            Map<Integer, UserVO> mapTeacher = userService.mapTeacher();
 
             model.addAttribute("lectureList", lectureList);
+            model.addAttribute("mapTeacher", mapTeacher);
 
         } catch (Exception e) {
             logger.info(e.toString());
@@ -81,7 +88,10 @@ public class LectureController {
 
             if (lectureList.isEmpty()) return "redirect:/lecture";
 
+            Map<Integer, UserVO> mapTeacher = userService.mapTeacher();
+
             model.addAttribute("lectureList", lectureList);
+            model.addAttribute("mapTeacher", mapTeacher);
 
         } catch (Exception e) {
             logger.info(e.toString());
@@ -97,21 +107,17 @@ public class LectureController {
         logger.info("categoryLectureGET 실행");
 
         try {
-            List<LectureVO> lectureList = new ArrayList<>();
+            List<LectureVO> lectureList;
 
             if (skill == null) lectureList = lectureService.listLecture(courseName, categoryName, null);
             else lectureList = lectureService.listLecture(courseName, categoryName, skill);
 
-//            System.out.println(new String("\u2219"));
-//            System.out.println(new String(courseName.getBytes(StandardCharsets.UTF_16)));
-//            System.out.println(courseName.getBytes(StandardCharsets.UTF_16).toString());
-//            System.out.println(courseName.getBytes("UTF-16"));
-//            System.out.println(courseName.getBytes("UTF-16").toString());
-//            System.out.println(new String(courseName.getBytes("UTF-16")));
-//            if (lectureList.isEmpty()) return "redirect:/lecture/" + new String(courseName.getBytes(StandardCharsets.UTF_8));
             if (lectureList.isEmpty()) return "redirect:/lecture/" + URLEncoder.encode(courseName, StandardCharsets.UTF_8);
 
+            Map<Integer, UserVO> mapTeacher = userService.mapTeacher();
+
             model.addAttribute("lectureList", lectureList);
+            model.addAttribute("mapTeacher", mapTeacher);
 
         } catch (Exception e) {
             logger.info(e.toString());
