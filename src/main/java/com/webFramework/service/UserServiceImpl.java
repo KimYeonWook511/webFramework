@@ -6,6 +6,7 @@ import com.webFramework.persistence.UserDAO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -27,5 +28,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO readUser(String userId) throws Exception {
         return (UserVO)userDAO.readUser(userId);
+    }
+
+    @Override
+    public Map<Integer, UserVO> mapTeacher() throws Exception {
+        return userDAO.listTeacher();
     }
 }

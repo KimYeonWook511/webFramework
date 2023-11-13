@@ -14,4 +14,10 @@
     <select id="signupCheckId" resultType="boolean">
         select count(*) from user_info where userId = #{userId} and userState = 1;
     </select>
+
+    <select id="listTeacher" resultType="com.webFramework.domain.UserVO">
+        select userNo, userId, userName, userGender, userCallNumber
+          from user_info
+          where userAuthority = "teacher" and userState = 1;
+    </select>
 </mapper>

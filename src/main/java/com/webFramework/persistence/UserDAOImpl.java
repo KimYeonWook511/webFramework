@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -26,5 +29,18 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public boolean signupCheckId(String userId) throws Exception {
         return sqlSession.selectOne(NAMESPACE + ".signupCheckId", userId);
+    }
+
+    @Override
+    public Map<Integer, UserVO> listTeacher() throws Exception {
+        List<UserVO> listTeacher = sqlSession.selectList(NAMESPACE + ".listTeacher");
+
+        Map<Integer, UserVO> mapTeacher = new HashMap<>();
+
+        for (UserVO teacher : listTeacher) {
+            mapTeacher.put(teacher.getUserNo(), teacher); // 중복 존재할 확률이 없어서 containsKey 하지 않음
+        }
+
+        return mapTeacher;
     }
 }
