@@ -22,7 +22,7 @@ public class CourseVO {
 
     @Override
     public String toString() {
-        return "CourseDTO{" +
+        return "CourseVO{" +
                 "courseNo=" + courseNo +
                 ", courseName='" + courseName + '\'' +
                 '}';

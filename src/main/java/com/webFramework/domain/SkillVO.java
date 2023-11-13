@@ -22,7 +22,7 @@ public class SkillVO {
 
     @Override
     public String toString() {
-        return "SkillDTO{" +
+        return "SkillVO{" +
                 "skillNo=" + skillNo +
                 ", skillName='" + skillName + '\'' +
                 '}';

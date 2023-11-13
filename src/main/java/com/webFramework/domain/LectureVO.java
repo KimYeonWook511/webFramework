@@ -69,7 +69,7 @@ public class LectureVO {
 
     @Override
     public String toString() {
-        return "LectureDTO{" +
+        return "LectureVO{" +
                 "lectureNo=" + lectureNo +
                 ", lectureTeacherNo=" + lectureTeacherNo +
                 ", lectureName='" + lectureName + '\'' +
