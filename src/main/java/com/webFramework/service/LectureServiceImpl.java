@@ -32,4 +32,9 @@ public class LectureServiceImpl implements LectureService {
     public List<Map<String, Object>> listHierarchy() throws Exception {
         return lectureDAO.listHierarchy();
     }
+
+    @Override
+    public LectureVO readLecture(String lectureName) throws Exception {
+        return lectureDAO.readLecture(lectureName);
+    }
 }

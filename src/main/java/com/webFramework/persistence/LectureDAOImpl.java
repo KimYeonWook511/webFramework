@@ -39,4 +39,9 @@ public class LectureDAOImpl implements LectureDAO{
     public List<Map<String, Object>> listHierarchy() throws Exception {
         return sqlSession.selectList(NAMESPACE + ".listHierarchy");
     }
+
+    @Override
+    public LectureVO readLecture(String lectureName) throws Exception {
+        return (LectureVO)sqlSession.selectOne(NAMESPACE + ".readLecture", lectureName);
+    }
 }

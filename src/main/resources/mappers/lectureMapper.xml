@@ -66,4 +66,13 @@
           group by courseName, categoryName, skillName
           order by 1, 2, 3
     </select>
+
+    <select id="readLecture" resultType="com.webFramework.domain.LectureVO">
+        select *
+          from lecture_info
+          where lectureName = #{lectureName}
+            and lectureNo > 0
+            and lectureState = 1
+          order by lectureNo desc, lectureOpenDate desc
+    </select>
 </mapper>

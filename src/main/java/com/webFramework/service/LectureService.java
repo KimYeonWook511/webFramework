@@ -10,4 +10,5 @@ public interface LectureService {
     public List<Map<String, Object>> listCourse() throws Exception;
     public List<Map<String, Object>> listCategory() throws Exception;
     public List<Map<String, Object>> listHierarchy() throws Exception;
+    public LectureVO readLecture(String lectureName) throws Exception;
 }
