@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>navbar</title>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <link rel="stylesheet" href="/resources/css/navbar.css">
+    <link rel="stylesheet" href="/resources/css/layout/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
@@ -47,6 +47,18 @@
                         </c:forEach>
                     </ul>
                 </li>
+            <c:if test="${loginVO.userAuthority == 'admin'}">
+                <li>
+                    <a href="/admin" class="desktop-link">관리자탭</a>
+                    <input type="checkbox" id="show-adminTab">
+                    <label for="show-adminTab">관리자탭</label>
+                    <ul>
+                        <li>
+                            <a href="/admin/createHierarchy">분류계층생성</a>
+                        </li>
+                    </ul>
+                </li>
+            </c:if>
                 <c:if test="${empty loginVO}">
                     <li>
                         <a href="#" class="desktop-link">접속하기</a>

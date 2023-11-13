@@ -220,8 +220,7 @@ nav .content .links,
     /*.sub-content .login .links{*/
     /*    height: 300px;*/
     /*}*/
-    nav #show-menu:checked ~ .content .links,
-    nav #show-menu:checked ~ .login .links{
+    nav #show-menu:checked ~ .content .links{
         left: 0%;
     }
     .content .links li,
@@ -258,6 +257,7 @@ nav .content .links,
     .content .links #show-courses:checked ~ ul,
     .content .links #show-login:checked ~ ul,
     .content .links #show-user:checked ~ ul,
+    .content .links #show-adminTab:checked ~ ul,
     .content .links input[id^="show-categories-"]:checked ~ ul,
     .content .links input[id^="show-skills-"]:checked ~ ul{
         max-height: 100vh;
