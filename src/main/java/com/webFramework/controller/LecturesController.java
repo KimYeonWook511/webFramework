@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping("/lectures")
 public class LecturesController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(LecturesController.class);
 
     @Inject
     LecturesService lecturesService;

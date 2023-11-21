@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping("/lecture")
 public class LectureController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(LectureController.class);
 
     @Inject
     LectureService lectureService;
