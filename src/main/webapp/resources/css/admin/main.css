@@ -1,0 +1,64 @@
+.container {
+    max-width: calc(100% - 600px);
+    display: grid;
+    grid-template-rows: auto 500px;
+    column-gap: 20px;
+    row-gap: 30px;
+    margin: 0 auto;
+}
+
+.tab {
+    display: grid;
+    grid-template-areas: "tab-title"
+                         "tab-data";
+    grid-template-rows: 60px auto;
+    row-gap: 20px;
+    padding: 50px 0;
+}
+
+.tab-title {
+    display: flex;
+    align-items: center;
+    justify-content : center;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.tab-data {
+    display: grid;
+    grid-template-areas: "tab-createHierarchy"
+                         "tab-createMaster";
+    grid-template-rows: 60px 60px;
+    row-gap: 30px;
+}
+
+.tab-createHierarchy {
+    display: flex;
+    align-items: center;
+    justify-content : center;
+}
+
+.tab-createMaster {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+}
+
+.tab-createCourse {
+    display: flex;
+    align-items: center;
+    justify-content : center;
+    max-width: 100%;
+}
+
+.tab-createCategory {
+    display: flex;
+    align-items: center;
+    justify-content : center;
+}
+
+.tab-createSkill {
+    display: flex;
+    align-items: center;
+    justify-content : center;
+}
