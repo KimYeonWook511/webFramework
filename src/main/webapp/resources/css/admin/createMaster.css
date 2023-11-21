@@ -1,0 +1,42 @@
+.container {
+    max-width: calc(100% - 300px);
+    display: grid;
+    grid-template-rows: auto 500px;
+    column-gap: 20px;
+    row-gap: 30px;
+    margin: 0 auto;
+}
+
+.master {
+    display: grid;
+    grid-template-areas: "master-title"
+                         "master-data"
+                         "master-submit";
+    grid-template-rows: 60px auto 60px;
+    row-gap: 30px;
+    padding: 50px 0;
+}
+
+.master-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.master-data > label {
+    margin: 8px 4px;
+}
+
+.master-submit {
+    display: grid;
+    grid-template-areas: "master-input" "master-btn";
+    grid-template-columns: auto 60px;
+}
+
+.master-items {
+    color: #ffffff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    cursor: default;
+}

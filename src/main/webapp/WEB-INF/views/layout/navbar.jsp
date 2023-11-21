@@ -49,19 +49,20 @@
                 </li>
             <c:if test="${loginVO.userAuthority == 'admin'}">
                 <li>
-                    <a href="/admin" class="desktop-link">관리자탭</a>
+                    <a href="/admin/main" class="desktop-link">관리자탭</a>
                     <input type="checkbox" id="show-adminTab">
                     <label for="show-adminTab">관리자탭</label>
                     <ul>
-                        <li>
-                            <a href="/admin/createHierarchy">분류계층생성</a>
-                        </li>
+                        <li><a href="/admin/createHierarchy">분류계층생성</a></li>
+                        <li><a href="/admin/createMaster?master=course">대분류생성</a></li>
+                        <li><a href="/admin/createMaster?master=category">중분류생성</a></li>
+                        <li><a href="/admin/createMaster?master=skill">소분류생성</a></li>
                     </ul>
                 </li>
             </c:if>
                 <c:if test="${empty loginVO}">
                     <li>
-                        <a href="#" class="desktop-link">접속하기</a>
+                        <a href="/user/login" class="desktop-link">접속하기</a>
                         <input type="checkbox" id="show-login">
                         <label for="show-login">접속하기</label>
                         <ul>

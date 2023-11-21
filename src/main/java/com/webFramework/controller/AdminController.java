@@ -5,24 +5,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @Inject
     AdminService adminService;
+
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String mainGET() {
+        logger.info("mainGET 실행");
+
+        return "/admin/main";
+    }
 
     @RequestMapping(value = "/createHierarchy", method = RequestMethod.GET)
     public String createHierarchyGET(Model model) {
@@ -130,6 +134,130 @@ public class AdminController {
             logger.info(e.toString());
             return "exception 처리";
         }
+    }
+
+    @RequestMapping(value = "/createMaster", method = RequestMethod.GET)
+    public String createMasterGET(String master, Model model) {
+        logger.info("createMasterGET 실행");
+
+        if (master == null) {
+            return "redirect:/admin/main";
+
+        } else if (master.equals("course")) {
+            try {
+                model.addAttribute("courseList", adminService.listCourseMaster());
+                model.addAttribute("master", "course");
+
+            } catch (Exception e) {
+                logger.info(e.toString());
+                return "exception 처리";
+            }
+
+        } else if (master.equals("category")) {
+            try {
+                model.addAttribute("categoryList", adminService.listCategoryMaster());
+                model.addAttribute("master", "category");
+
+            } catch (Exception e) {
+                logger.info(e.toString());
+                return "exception 처리";
+            }
+
+        } else if (master.equals("skill")) {
+            try {
+                model.addAttribute("skillList", adminService.listSkillMaster());
+                model.addAttribute("master", "skill");
+
+            } catch (Exception e) {
+                logger.info(e.toString());
+                return "exception 처리";
+            }
+
+        } else {
+            // 잘못된 master 파라미터 값
+            return "redirect:/admin/main";
+        }
+
+        return "/admin/createMaster";
+    }
+
+    @RequestMapping(value = "/createMaster", method = RequestMethod.POST)
+    public String createMasterPOST(String courseName, String categoryName, String skillName, RedirectAttributes rttr,
+                                   HttpServletRequest request) {
+        logger.info("createMasterPOST 실행");
+
+        if (courseName != null && !courseName.isBlank()) {
+            courseName = courseName.strip(); // 앞뒤 공백 제거
+
+            try {
+                if (adminService.checkCourseName(courseName)) {
+                    // 대분류 이름 존재
+                    rttr.addFlashAttribute("errorCode", 2);
+
+                } else {
+                    adminService.createCourse(courseName);
+
+                    // 정상적으로 추가됨
+                    rttr.addFlashAttribute("errorCode", 0);
+                }
+
+                rttr.addFlashAttribute("msg", "courseName: " + courseName);
+
+            } catch (Exception e) {
+                logger.info(e.toString());
+                return "exception 처리";
+            }
+
+        } else if (categoryName != null && !categoryName.isBlank()) {
+            categoryName = categoryName.strip(); // 앞뒤 공백 제거
+
+            try {
+                if (adminService.checkCategoryName(categoryName)) {
+                    // 중분류 이름 존재
+                    rttr.addFlashAttribute("errorCode", 2);
+
+                } else {
+                    adminService.createCategory(categoryName);
+
+                    // 정상적으로 추가됨
+                    rttr.addFlashAttribute("errorCode", 0);
+                }
+
+                rttr.addFlashAttribute("msg", "categoryName: " + categoryName);
+
+            } catch (Exception e) {
+                logger.info(e.toString());
+                return "exception 처리";
+            }
+
+        } else if (skillName != null && !skillName.isBlank()) {
+            skillName = skillName.strip(); // 앞뒤 공백 제거
+
+            try {
+                if (adminService.checkSkillName(skillName)) {
+                    // 소분류 이름 존재
+                    rttr.addFlashAttribute("errorCode", 2);
+
+                } else {
+                    adminService.createSkill(skillName);
+
+                    // 정상적으로 추가됨
+                    rttr.addFlashAttribute("errorCode", 0);
+                }
+
+                rttr.addFlashAttribute("msg", "skillName: " + skillName);
+
+            } catch (Exception e) {
+                logger.info(e.toString());
+                return "exception 처리";
+            }
+
+        } else {
+            // 잘못된 입력
+            rttr.addFlashAttribute("errorCode", 1);
+        }
+
+        return "redirect:" + request.getHeader("Referer");
     }
 
     @RequestMapping(value = "/createLecture", method = RequestMethod.GET)
