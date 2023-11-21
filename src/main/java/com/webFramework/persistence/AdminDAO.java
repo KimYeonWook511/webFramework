@@ -22,4 +22,7 @@ public interface AdminDAO {
     public boolean checkCategory(int categoryNo) throws Exception;
     public boolean checkSkill(int skillNo) throws Exception;
     public boolean checkHierarchy(Map<String, Integer> hierarchyMap) throws Exception;
+    public boolean checkCourseName(String courseName) throws Exception;
+    public boolean checkCategoryName(String categoryName) throws Exception;
+    public boolean checkSkillName(String skillName) throws Exception;
 }

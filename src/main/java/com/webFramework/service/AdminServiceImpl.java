@@ -91,4 +91,19 @@ public class AdminServiceImpl implements AdminService {
 
         return adminDAO.checkHierarchy(map);
     }
+
+    @Override
+    public boolean checkCourseName(String courseName) throws Exception {
+        return adminDAO.checkCourseName(courseName);
+    }
+
+    @Override
+    public boolean checkCategoryName(String categoryName) throws Exception {
+        return adminDAO.checkCategoryName(categoryName);
+    }
+
+    @Override
+    public boolean checkSkillName(String skillName) throws Exception {
+        return adminDAO.checkSkillName(skillName);
+    }
 }

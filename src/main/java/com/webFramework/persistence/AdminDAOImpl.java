@@ -88,4 +88,20 @@ public class AdminDAOImpl implements AdminDAO {
     public boolean checkHierarchy(Map<String, Integer> hierarchyMap) throws Exception {
         return sqlSession.selectOne(NAMESPACE + ".checkHierarchy", hierarchyMap);
     }
+
+    @Override
+    public boolean checkCourseName(String courseName) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".checkCourseName", courseName);
+    }
+
+    @Override
+    public boolean checkCategoryName(String categoryName) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".checkCategoryName", categoryName);
+
+    }
+
+    @Override
+    public boolean checkSkillName(String skillName) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".checkSkillName", skillName);
+    }
 }

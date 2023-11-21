@@ -70,6 +70,25 @@
 
     <!-- 분류 계층 존재 여부 -->
     <select id="checkHierarchy" resultType="boolean">
-        select count(*) from hierarchy_table where courseNo = #{courseNo} and categoryNo = #{categoryNo} and skillNo = #{skillNo}
+        select count(*)
+          from hierarchy_table
+          where courseNo = #{courseNo}
+            and categoryNo = #{categoryNo}
+            and skillNo = #{skillNo}
+    </select>
+
+    <!-- 대분류 이름 중복 체크 -->
+    <select id="checkCourseName" resultType="boolean">
+        select count(*) from course_table where courseName = #{courseName}
+    </select>
+
+    <!-- 중분류 이름 중복 체크 -->
+    <select id="checkCategoryName" resultType="boolean">
+        select count(*) from category_table where categoryName = #{categoryName}
+    </select>
+
+    <!-- 소분류 이름 중복 체크 -->
+    <select id="checkSkillName" resultType="boolean">
+        select count(*) from skill_table where skillName = #{skillName}
     </select>
 </mapper>

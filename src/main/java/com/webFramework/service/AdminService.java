@@ -22,4 +22,7 @@ public interface AdminService {
     public boolean checkCategory(int categoryNo) throws Exception;
     public boolean checkSkill(int skillNo) throws Exception;
     public boolean checkHierarchy(int courseNo, int categoryNo, int skillNo) throws Exception;
+    public boolean checkCourseName(String courseName) throws Exception;
+    public boolean checkCategoryName(String categoryName) throws Exception;
+    public boolean checkSkillName(String skillName) throws Exception;
 }
