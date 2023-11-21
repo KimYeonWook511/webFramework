@@ -37,25 +37,25 @@ public class UserController {
                              RedirectAttributes rttr, HttpServletRequest request, HttpServletResponse response) {
         logger.info("signupPOST 실행");
 
-        if (userDTO.getUserId().isEmpty()) {
+        if (userDTO.getUserId().isBlank()) {
             logger.info("아이디 입력란 공백");
             rttr.addFlashAttribute("signupResult", "empty_userId");
             rttr.addFlashAttribute("dto", userDTO);
             return "redirect:/user/signup";
 
-        } else if (userDTO.getUserPassword().isEmpty()) {
+        } else if (userDTO.getUserPassword().isBlank()) {
             logger.info("비밀번호 입력란 공백");
             rttr.addFlashAttribute("signupResult", "empty_userPassword");
             rttr.addFlashAttribute("dto", userDTO);
             return "redirect:/user/signup";
 
-        } else if (userDTO.getUserName().isEmpty()) {
+        } else if (userDTO.getUserName().isBlank()) {
             logger.info("이름 입력란 공백");
             rttr.addFlashAttribute("signupResult", "empty_userName");
             rttr.addFlashAttribute("dto", userDTO);
             return "redirect:/user/signup";
 
-        } else if (userDTO.getUserCallNumber().isEmpty()) {
+        } else if (userDTO.getUserCallNumber().isBlank()) {
             logger.info("전화번호 입력란 공백");
             rttr.addFlashAttribute("signupResult", "empty_userCallNumber");
             rttr.addFlashAttribute("dto", userDTO);
