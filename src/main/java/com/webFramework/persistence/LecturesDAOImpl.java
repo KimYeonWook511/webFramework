@@ -28,16 +28,6 @@ public class LecturesDAOImpl implements LecturesDAO {
     }
 
     @Override
-    public List<CourseVO> listCourse() throws Exception {
-        return sqlSession.selectList(NAMESPACE + ".listCourse");
-    }
-
-    @Override
-    public List<CategoryVO> listCategory(String courseName) throws Exception {
-        return sqlSession.selectList(NAMESPACE + ".listCategory", courseName);
-    }
-
-    @Override
     public List<Map<String, Object>> listHierarchy() throws Exception {
         return sqlSession.selectList(NAMESPACE + ".listHierarchy");
     }

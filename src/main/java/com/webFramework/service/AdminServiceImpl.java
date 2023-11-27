@@ -106,4 +106,14 @@ public class AdminServiceImpl implements AdminService {
     public boolean checkSkillName(String skillName) throws Exception {
         return adminDAO.checkSkillName(skillName);
     }
+
+    @Override
+    public List<CourseVO> listCourse() throws Exception {
+        return adminDAO.listCourse();
+    }
+
+    @Override
+    public List<CategoryVO> listCategory(String courseName) throws Exception {
+        return adminDAO.listCategory(courseName);
+    }
 }

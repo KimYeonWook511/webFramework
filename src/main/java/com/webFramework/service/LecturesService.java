@@ -9,7 +9,5 @@ import java.util.Map;
 
 public interface LecturesService {
     public List<LectureVO> listLecture(String courseName, String categoryName, String skillName) throws Exception;
-    public List<CourseVO> listCourse() throws Exception;
-    public List<CategoryVO> listCategory(String courseName) throws Exception;
     public List<Map<String, Object>> listHierarchy() throws Exception;
 }

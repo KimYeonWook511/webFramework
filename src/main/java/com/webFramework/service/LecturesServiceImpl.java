@@ -21,16 +21,6 @@ public class LecturesServiceImpl implements LecturesService {
     }
 
     @Override
-    public List<CourseVO> listCourse() throws Exception {
-        return lecturesDAO.listCourse();
-    }
-
-    @Override
-    public List<CategoryVO> listCategory(String courseName) throws Exception {
-        return lecturesDAO.listCategory(courseName);
-    }
-
-    @Override
     public List<Map<String, Object>> listHierarchy() throws Exception {
         return lecturesDAO.listHierarchy();
     }

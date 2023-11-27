@@ -104,4 +104,14 @@ public class AdminDAOImpl implements AdminDAO {
     public boolean checkSkillName(String skillName) throws Exception {
         return sqlSession.selectOne(NAMESPACE + ".checkSkillName", skillName);
     }
+
+    @Override
+    public List<CourseVO> listCourse() throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listCourse");
+    }
+
+    @Override
+    public List<CategoryVO> listCategory(String courseName) throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listCategory", courseName);
+    }
 }
