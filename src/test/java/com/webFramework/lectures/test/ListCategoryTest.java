@@ -1,5 +1,6 @@
 package com.webFramework.lectures.test;
 
+import com.webFramework.domain.CategoryVO;
 import com.webFramework.service.LecturesService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,10 +21,11 @@ public class ListCategoryTest {
     @Test
     public void listCategoryTest() {
         try {
-            List<Map<String, Object>> list = lecturesService.listCategory();
+            String courseName = "IT∙프로그래밍";
+            List<CategoryVO> list = lecturesService.listCategory(courseName);
 
-            for (Map<String, Object> hierarchy : list) {
-                System.out.println("courseNo: " + hierarchy.get("courseNo") + " | courseName: " + hierarchy.get("courseName") + " | categoryNo: " + hierarchy.get("categoryNo") + " | categoryName: " + hierarchy.get("categoryName"));
+            for (CategoryVO vo : list) {
+                System.out.println("categoryNo: " + vo.getCategoryNo() + " | categoryName: " + vo.getCategoryName());
             }
 
         } catch (Exception e) {
