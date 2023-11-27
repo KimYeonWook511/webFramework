@@ -1,7 +1,7 @@
 package com.webFramework.admin.test;
 
 import com.webFramework.domain.CategoryVO;
-import com.webFramework.service.LecturesService;
+import com.webFramework.service.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,13 +15,13 @@ import java.util.List;
 
 public class ListCategoryTest {
     @Inject
-    LecturesService lecturesService;
+    AdminService adminService;
 
     @Test
     public void listCategoryTest() {
         try {
             String courseName = "IT∙프로그래밍";
-            List<CategoryVO> list = lecturesService.listCategory(courseName);
+            List<CategoryVO> list = adminService.listCategory(courseName);
 
             for (CategoryVO vo : list) {
                 System.out.println("categoryNo: " + vo.getCategoryNo() + " | categoryName: " + vo.getCategoryName());
