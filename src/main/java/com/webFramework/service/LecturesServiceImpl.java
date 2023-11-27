@@ -1,5 +1,7 @@
 package com.webFramework.service;
 
+import com.webFramework.domain.CategoryVO;
+import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureVO;
 import com.webFramework.persistence.LecturesDAO;
 import org.springframework.stereotype.Service;
@@ -19,13 +21,13 @@ public class LecturesServiceImpl implements LecturesService {
     }
 
     @Override
-    public List<Map<String, Object>> listCourse() throws Exception {
+    public List<CourseVO> listCourse() throws Exception {
         return lecturesDAO.listCourse();
     }
 
     @Override
-    public List<Map<String, Object>> listCategory() throws Exception {
-        return lecturesDAO.listCategory();
+    public List<CategoryVO> listCategory(String courseName) throws Exception {
+        return lecturesDAO.listCategory(courseName);
     }
 
     @Override

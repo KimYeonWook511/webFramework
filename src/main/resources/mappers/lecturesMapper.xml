@@ -32,7 +32,7 @@
            order by lectureNo desc, lectureOpenDate desc
     </select>
 
-    <select id="listCourse" resultType="map">
+    <select id="listCourse" resultType="com.webFramework.domain.CourseVO">
         select c.courseNo, courseName
           from hierarchy_table as h
         left join course_table as c
@@ -41,15 +41,16 @@
           order by 1
     </select>
 
-    <select id="listCategory" resultType="map">
-        select c.courseNo, courseName, a.categoryNo, categoryName
+    <select id="listCategory" resultType="com.webFramework.domain.CategoryVO">
+        select a.categoryNo, categoryName
           from hierarchy_table as h
-        left join course_table as c
-          on h.courseNo = c.courseNo
         left join category_table as a
           on h.categoryNo = a.categoryNo
-          group by courseNo, categoryNo
-          order by 1, 3
+          where courseNo in (select courseNo
+                               from course_table
+                               where courseName = #{courseName})
+          group by categoryNo
+          order by 1
     </select>
 
     <select id="listHierarchy" resultType="map">

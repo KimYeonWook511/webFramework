@@ -1,5 +1,7 @@
 package com.webFramework.persistence;
 
+import com.webFramework.domain.CategoryVO;
+import com.webFramework.domain.CourseVO;
 import com.webFramework.domain.LectureVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -26,13 +28,13 @@ public class LecturesDAOImpl implements LecturesDAO {
     }
 
     @Override
-    public List<Map<String, Object>> listCourse() throws Exception {
+    public List<CourseVO> listCourse() throws Exception {
         return sqlSession.selectList(NAMESPACE + ".listCourse");
     }
 
     @Override
-    public List<Map<String, Object>> listCategory() throws Exception {
-        return sqlSession.selectList(NAMESPACE + ".listCategory");
+    public List<CategoryVO> listCategory(String courseName) throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listCategory", courseName);
     }
 
     @Override
