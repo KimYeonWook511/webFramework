@@ -1,6 +1,6 @@
-package com.webFramework.lectures.test;
+package com.webFramework.admin.test;
 
-import com.webFramework.domain.CourseVO;
+import com.webFramework.domain.CategoryVO;
 import com.webFramework.service.LecturesService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,22 +13,23 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/**/root-context.xml"})
 
-public class ListCourseTest {
+public class ListCategoryTest {
     @Inject
     LecturesService lecturesService;
 
     @Test
-    public void listCourseTest() {
+    public void listCategoryTest() {
         try {
-            List<CourseVO> list = lecturesService.listCourse();
+            String courseName = "IT∙프로그래밍";
+            List<CategoryVO> list = lecturesService.listCategory(courseName);
 
-            for (CourseVO vo : list) {
-                System.out.println("courseNo: " + vo.getCourseNo() + " | courseName: " + vo.getCourseName());
+            for (CategoryVO vo : list) {
+                System.out.println("categoryNo: " + vo.getCategoryNo() + " | categoryName: " + vo.getCategoryName());
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("listCourse 실패");
+            System.out.println("listCategory 실패");
         }
     }
 }

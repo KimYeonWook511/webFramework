@@ -91,4 +91,25 @@
     <select id="checkSkillName" resultType="boolean">
         select count(*) from skill_table where skillName = #{skillName}
     </select>
+
+    <select id="listCourse" resultType="com.webFramework.domain.CourseVO">
+        select c.courseNo, courseName
+        from hierarchy_table as h
+                 left join course_table as c
+                           on h.courseNo = c.courseNo
+        group by courseNo
+        order by 1
+    </select>
+
+    <select id="listCategory" resultType="com.webFramework.domain.CategoryVO">
+        select a.categoryNo, categoryName
+        from hierarchy_table as h
+                 left join category_table as a
+                           on h.categoryNo = a.categoryNo
+        where courseNo in (select courseNo
+                           from course_table
+                           where courseName = #{courseName})
+        group by categoryNo
+        order by 1
+    </select>
 </mapper>

@@ -32,27 +32,6 @@
            order by lectureNo desc, lectureOpenDate desc
     </select>
 
-    <select id="listCourse" resultType="com.webFramework.domain.CourseVO">
-        select c.courseNo, courseName
-          from hierarchy_table as h
-        left join course_table as c
-          on h.courseNo = c.courseNo
-          group by courseNo
-          order by 1
-    </select>
-
-    <select id="listCategory" resultType="com.webFramework.domain.CategoryVO">
-        select a.categoryNo, categoryName
-          from hierarchy_table as h
-        left join category_table as a
-          on h.categoryNo = a.categoryNo
-          where courseNo in (select courseNo
-                               from course_table
-                               where courseName = #{courseName})
-          group by categoryNo
-          order by 1
-    </select>
-
     <select id="listHierarchy" resultType="map">
         select courseName, categoryName, skillName
           from hierarchy_table as h
