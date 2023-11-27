@@ -114,4 +114,13 @@ public class AdminDAOImpl implements AdminDAO {
     public List<CategoryVO> listCategory(String courseName) throws Exception {
         return sqlSession.selectList(NAMESPACE + ".listCategory", courseName);
     }
+
+    @Override
+    public List<SkillVO> listSkill(String courseName, String categoryName) throws Exception {
+        Map<String, String> map = new HashMap<>();
+        map.put("courseName", courseName);
+        map.put("categoryName", categoryName);
+
+        return sqlSession.selectList(NAMESPACE + ".listSkill", map);
+    }
 }

@@ -27,4 +27,5 @@ public interface AdminDAO {
     public boolean checkSkillName(String skillName) throws Exception;
     public List<CourseVO> listCourse() throws Exception;
     public List<CategoryVO> listCategory(String courseName) throws Exception;
+    public List<SkillVO> listSkill(String courseName, String categoryName) throws Exception;
 }

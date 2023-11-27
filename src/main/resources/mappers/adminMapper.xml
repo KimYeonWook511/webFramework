@@ -112,4 +112,21 @@
           group by categoryNo
           order by 1
     </select>
+
+    <select id="listSkill" resultType="com.webFramework.domain.SkillVO">
+        select s.skillNo, skillName
+          from hierarchy_table as h
+        left join category_table as a
+          on h.categoryNo = a.categoryNo
+        left join skill_table as s
+          on h.skillNo = s.skillNo
+          where courseNo in (select courseNo
+                               from course_table
+                               where courseName = #{courseName})
+            and a.categoryNo in (select a.categoryNo
+                                   from category_table
+                                   where categoryName = #{categoryName})
+          group by skillNo
+          order by 1
+    </select>
 </mapper>

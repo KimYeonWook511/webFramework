@@ -116,4 +116,9 @@ public class AdminServiceImpl implements AdminService {
     public List<CategoryVO> listCategory(String courseName) throws Exception {
         return adminDAO.listCategory(courseName);
     }
+
+    @Override
+    public List<SkillVO> listSkill(String courseName, String categoryName) throws Exception {
+        return adminDAO.listSkill(courseName, categoryName);
+    }
 }
