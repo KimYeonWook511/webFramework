@@ -62,6 +62,7 @@ public class LecturesController {
 
             model.addAttribute("lectureList", lectureList);
             model.addAttribute("mapTeacher", mapTeacher);
+            model.addAttribute("courseName", courseName);
 
         } catch (Exception e) {
             logger.info(e.toString());
@@ -88,6 +89,8 @@ public class LecturesController {
 
             model.addAttribute("lectureList", lectureList);
             model.addAttribute("mapTeacher", mapTeacher);
+            model.addAttribute("courseName", courseName);
+            model.addAttribute("categoryName", categoryName);
 
         } catch (Exception e) {
             logger.info(e.toString());
