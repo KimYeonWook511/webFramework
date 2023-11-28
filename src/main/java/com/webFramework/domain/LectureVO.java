@@ -39,6 +39,10 @@ public class LectureVO {
         return lectureContent;
     }
 
+    public String getLectureContentRepl() {
+        return lectureContent.replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>").replace(" ", "&nbsp;");
+    }
+
     public void setLectureContent(String lectureContent) {
         this.lectureContent = lectureContent;
     }
