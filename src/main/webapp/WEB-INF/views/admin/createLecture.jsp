@@ -74,11 +74,11 @@
         </div>
     </div>
     <script>
-        document.addEventListener('keydown', function(event) {
+        $('input[type="text"]').keydown(function() {
             if (event.keyCode === 13) {
                 event.preventDefault();
             }
-        }, true);
+        });
 
         function checkTeacher() {
             let input = document.getElementById('lectureTeacher');

@@ -23,7 +23,7 @@
                     <div class="lecture-title">강의제목: ${lectureVO.lectureName}</div>
                     <div class="lecture-sub1">강사이름: ${mapTeacher.get(lectureVO.lectureTeacherNo).userName}(${lectureVO.lectureTeacherNo})</div>
                     <div class="lecture-sub2">수강생: ${lectureVO.lectureStudentCount}명</div>
-                    <div class="lecture-content">강의설명: ${lectureVO.lectureContent}</div>
+                    <div class="lecture-content">강의설명: ${lectureVO.getLectureContentRepl()}</div>
                 </a>
             </c:forEach>
         </div>

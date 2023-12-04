@@ -1,3 +1,36 @@
+.container-header {
+    max-width: calc(100% - 300px);
+    display: grid;
+    grid-template-areas: "header-div" "header-div" "header-div";
+    grid-template-columns: auto auto auto;
+    justify-content: start;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.header-div {
+    font-size: 25px;
+    font-weight: 500;
+    color: #929292;
+}
+
+.header-link {
+    font-size: 25px;
+    font-weight: 500;
+    color: #929292;
+    padding-right: 5px;
+}
+
+.header-link:visited {
+    font-size: 25px;
+    font-weight: 500;
+    color: #929292;
+}
+
+.header-link:hover {
+    color: black;
+}
+
 .container {
     max-width: calc(100% - 300px);
     display: grid;
@@ -44,6 +77,9 @@
     display: flex;
     justify-content : center;
     align-items : center;
+    white-space: nowrap; /* 줄바꿈 금지 */
+    overflow: hidden; /* 넘치는 부분 감춤 */
+    text-overflow: ellipsis; /* 넘치는 부분 ... 표시 */
 }
 
 .lecture-sub1 {
@@ -72,7 +108,8 @@
     background-color: black;
     color: whitesmoke;
     transition: all 0.3s ease;
-    /*visibility: visible;*/
+    overflow: hidden; /* 넘치는 부분 감춤 */
+    text-overflow: ellipsis; /* 넘치는 부분 ... 표시 */
 }
 
 .lecture-content {

@@ -32,6 +32,7 @@
     display: grid;
     grid-template-areas: "master-input" "master-btn";
     grid-template-columns: auto 60px;
+    column-gap: 10px;
 }
 
 .master-items {

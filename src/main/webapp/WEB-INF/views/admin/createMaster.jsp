@@ -55,11 +55,11 @@
         </div>
     </div>
     <script>
-        document.addEventListener('keydown', function(event) {
+        $('input[type="text"]').keydown(function() {
             if (event.keyCode === 13) {
                 event.preventDefault();
             }
-        }, true);
+        });
 
         if ('${errorCode}' == '1') {
             alert("실패: 올바르지 않은 처리입니다.");

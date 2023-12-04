@@ -18,7 +18,7 @@
 
 .lecture-data {
     display: grid;
-    grid-template-areas: "lecture-title"
+    grid-template-areas: "lecture-name"
                          "lecture-sub"
                          "lecture-content";
     grid-template-rows: 50px
@@ -27,10 +27,22 @@
     row-gap: 15px;
 }
 
-.lecture-title {
+.lecture-name {
+    display: grid;
+    grid-template-areas: "name-title" "name-data";
+    grid-template-columns: 120px auto;
+    column-gap: 10px;
+}
+
+.name-title {
     display: flex;
     align-items: center;
     font-weight: 600;
+    font-size: 32px;
+}
+
+.name-data {
+    font-weight: 500;
     font-size: 32px;
 }
 
@@ -56,10 +68,23 @@
 }
 
 .lecture-content {
+    display: grid;
+    grid-template-areas: "content-title" "content-data";
+    grid-template-columns: 75px auto;
+    column-gap: 10px;
+    padding: 25px 0;
+}
+
+.content-title {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.content-data {
     display: flex;
     align-items: center;
-    font-size: 20px;
-    padding: 40px 0;
+    font-size: 18px;
 }
 
 .lecture-btn {

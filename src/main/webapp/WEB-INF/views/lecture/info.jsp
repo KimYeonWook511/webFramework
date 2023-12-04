@@ -21,13 +21,17 @@
                 강의번호: ${lectureVO.lectureNo}
             </div>
             <div class="lecture-data">
-                <div class="lecture-title">강의제목: ${lectureVO.lectureName}</div>
+                <div class="lecture-name">
+                    <div class="name-title">강의제목: </div>
+                    <div class="name-data">${lectureVO.lectureName}</div>
+                </div>
                 <div class="lecture-sub">
-                    <div class="lecture-teacher">강사명: ${teacherVO.userName}(${lectureVO.lectureTeacherNo})</div>
+                    <div class="lecture-teacher">강사명: ${teacherVO.userName}</div>
                     <div class="lecture-count">수강생: ${lectureVO.lectureStudentCount}명</div>
                 </div>
                 <div class="lecture-content">
-                    강의설명: ${lectureVO.getLectureContentRepl()}
+                    <div class="content-title">강의설명: </div>
+                    <div class="content-data">${lectureVO.getLectureContentRepl()}</div>
                 </div>
             </div>
             <div class="lecture-btn">

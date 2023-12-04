@@ -68,11 +68,11 @@
         </div>
     </div>
     <script>
-        document.addEventListener('keydown', function(event) {
+        $('input[type="text"]').keydown(function() {
             if (event.keyCode === 13) {
                 event.preventDefault();
             }
-        }, true);
+        });
 
         if ('${signupResult}' == 'fail_id') {
             alert("이미 존재하는 아이디입니다.");

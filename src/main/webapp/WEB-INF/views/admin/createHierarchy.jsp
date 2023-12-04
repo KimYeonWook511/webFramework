@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>분류 추가</title>
+    <title>분류 계층 추가</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
@@ -38,7 +38,7 @@
                 <div class="hierarchy-skills">
                     <div class="skill-title">소분류</div>
                     <div class="skill-data">
-                    <c:forEach items="${skillList}" var="skillVO" varStatus="skillStatus">
+                    <c:forEach items="${skillList}" var="skillVO">
                         <input class="btn-check" type="radio" autocomplete="off" name="skillNo" value="${skillVO.skillNo}" id="${skillVO.skillName}">
                         <label class="btn btn-outline-secondary" for="${skillVO.skillName}">${skillVO.skillName}</label>
                     </c:forEach>
@@ -46,16 +46,14 @@
                 </div>
                 <input type="submit" class="btn btn-outline-secondary form-control hierarchy-btn" value="추가하기">
             </form>
-<%--            <div class="hierarchyTemp">--%>
-<%--            </div>--%>
         </div>
     </div>
     <script>
-        document.addEventListener('keydown', function(event) {
+        $('input[type="text"]').keydown(function() {
             if (event.keyCode === 13) {
                 event.preventDefault();
             }
-        }, true);
+        });
 
         if ('${errorCode}' == '1') {
             alert("실패: 대분류 값이 잘못되었습니다.");
