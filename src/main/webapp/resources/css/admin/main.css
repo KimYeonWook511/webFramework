@@ -27,8 +27,9 @@
 .tab-data {
     display: grid;
     grid-template-areas: "tab-createHierarchy"
-                         "tab-createMaster";
-    grid-template-rows: 60px 60px;
+                         "tab-createMaster"
+                         "tab-createLecture";
+    grid-template-rows: 60px 60px 60px;
     row-gap: 30px;
 }
 
@@ -42,6 +43,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 20px;
+}
+
+.tab-createLecture {
+    display: flex;
+    align-items: center;
+    justify-content : center;
 }
 
 .tab-createCourse {

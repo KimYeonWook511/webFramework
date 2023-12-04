@@ -19,20 +19,13 @@
             <div class="tab">
                 <div class="tab-title">관리자 탭</div>
                 <div class="tab-data">
-<%--                    <div class="tab-createHierarchy">--%>
-                        <a href="/admin/createHierarchy" class="btn btn-outline-secondary tab-createHierarchy">분류계층생성</a>
-<%--                    </div>--%>
+                    <a href="/admin/createHierarchy" class="btn btn-outline-secondary tab-createHierarchy">분류계층생성</a>
                     <div class="tab-createMaster">
-<%--                        <div class="tab-createCourse">--%>
-                            <a href="/admin/createMaster?master=course" class="btn btn-outline-secondary tab-createCourse">대분류생성</a>
-<%--                        </div>--%>
-<%--                        <div class="tab-createCategory">--%>
-                            <a href="/admin/createMaster?master=category" class="btn btn-outline-secondary tab-createCategory">중분류생성</a>
-<%--                        </div>--%>
-<%--                        <div class="tab-createSkill">--%>
-                            <a href="/admin/createMaster?master=skill" class="btn btn-outline-secondary tab-createSkill">소분류생성</a>
-<%--                        </div>--%>
+                        <a href="/admin/createMaster?master=course" class="btn btn-outline-secondary tab-createCourse">대분류생성</a>
+                        <a href="/admin/createMaster?master=category" class="btn btn-outline-secondary tab-createCategory">중분류생성</a>
+                        <a href="/admin/createMaster?master=skill" class="btn btn-outline-secondary tab-createSkill">소분류생성</a>
                     </div>
+                    <a href="/admin/createLecture" class="btn btn-outline-secondary tab-createLecture">강의등록</a>
                 </div>
             </div>
         </div>
