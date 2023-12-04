@@ -36,14 +36,20 @@ public class LectureController {
         try {
             Map<String, Object> mapLecture = lectureService.readLecture(lectureName);
 
-            if (mapLecture.get("lectureVO") == null) {
+            LectureVO lectureVO = (LectureVO)mapLecture.get("lectureVO");
+
+            if (lectureVO == null) {
                 logger.info("페이지 찾을 수 없음"); // lectureName에 해당되는 강의 존재하지 않음
 //                return "exception 처리";
                 return "redirect:/lectures";
             }
 
-            model.addAttribute("lectureVO", mapLecture.get("lectureVO"));
+            model.addAttribute("lectureVO", lectureVO);
             model.addAttribute("teacherVO", mapLecture.get("teacherVO"));
+
+            UserVO loginVO = (UserVO)session.getAttribute("loginVO");
+
+            if (loginVO != null) model.addAttribute("userLecture", lectureService.checkUserLecture(loginVO.getUserNo(), lectureVO.getLectureNo()));
 
         } catch (Exception e) {
             logger.info(e.toString());
