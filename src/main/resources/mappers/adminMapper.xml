@@ -129,4 +129,25 @@
           group by skillNo
           order by 1
     </select>
+
+    <select id="checkTeacher" resultType="com.webFramework.domain.UserVO">
+        select userNo, userId, userName, userGender, userCallNumber, userAuthority
+          from user_info
+          where userId = #{teacherId}
+            and userState = 1;
+    </select>
+
+    <select id="readHierarchyNo" resultType="Integer">
+        select hierarchyNo
+          from hierarchy_table
+          where courseNo in (select courseNo
+                               from course_table
+                               where courseName = #{courseName})
+            and categoryNo in (select categoryNo
+                                 from category_table
+                                 where categoryName = #{categoryName})
+            and skillNo in (select skillNo
+                              from skill_table
+                              where skillName = #{skillName})
+    </select>
 </mapper>

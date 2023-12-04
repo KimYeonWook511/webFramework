@@ -1,9 +1,6 @@
 package com.webFramework.persistence;
 
-import com.webFramework.domain.CategoryVO;
-import com.webFramework.domain.CourseVO;
-import com.webFramework.domain.LectureDTO;
-import com.webFramework.domain.SkillVO;
+import com.webFramework.domain.*;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -122,5 +119,20 @@ public class AdminDAOImpl implements AdminDAO {
         map.put("categoryName", categoryName);
 
         return sqlSession.selectList(NAMESPACE + ".listSkill", map);
+    }
+
+    @Override
+    public UserVO checkTeacher(String teacherId) throws Exception {
+        return (UserVO)sqlSession.selectOne(NAMESPACE + ".checkTeacher", teacherId);
+    }
+
+    @Override
+    public Integer readHierarchyNo(String courseName, String categoryName, String skillName) throws Exception {
+        Map<String, String> map = new HashMap<>();
+        map.put("courseName", courseName);
+        map.put("categoryName", categoryName);
+        map.put("skillName", skillName);
+
+        return sqlSession.selectOne(NAMESPACE + ".readHierarchyNo", map);
     }
 }

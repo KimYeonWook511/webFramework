@@ -1,9 +1,6 @@
 package com.webFramework.service;
 
-import com.webFramework.domain.CategoryVO;
-import com.webFramework.domain.CourseVO;
-import com.webFramework.domain.LectureDTO;
-import com.webFramework.domain.SkillVO;
+import com.webFramework.domain.*;
 import com.webFramework.persistence.AdminDAO;
 import org.springframework.stereotype.Service;
 
@@ -120,5 +117,15 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<SkillVO> listSkill(String courseName, String categoryName) throws Exception {
         return adminDAO.listSkill(courseName, categoryName);
+    }
+
+    @Override
+    public UserVO checkTeacher(String teacherId) throws Exception {
+        return adminDAO.checkTeacher(teacherId);
+    }
+
+    @Override
+    public Integer readHierarchyNo(String courseName, String categoryName, String skillName) throws Exception {
+        return adminDAO.readHierarchyNo(courseName, categoryName, skillName);
     }
 }

@@ -1,9 +1,6 @@
 package com.webFramework.persistence;
 
-import com.webFramework.domain.CategoryVO;
-import com.webFramework.domain.CourseVO;
-import com.webFramework.domain.LectureDTO;
-import com.webFramework.domain.SkillVO;
+import com.webFramework.domain.*;
 
 import java.util.List;
 import java.util.Map;
@@ -28,4 +25,6 @@ public interface AdminDAO {
     public List<CourseVO> listCourse() throws Exception;
     public List<CategoryVO> listCategory(String courseName) throws Exception;
     public List<SkillVO> listSkill(String courseName, String categoryName) throws Exception;
+    public UserVO checkTeacher(String teacherId) throws Exception;
+    public Integer readHierarchyNo(String courseName, String categoryName, String skillName) throws Exception;
 }
