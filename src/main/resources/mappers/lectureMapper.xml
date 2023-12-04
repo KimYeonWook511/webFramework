@@ -10,4 +10,27 @@
             and lectureState = 1
           order by lectureNo desc, lectureOpenDate desc
     </select>
+
+    <select id="checkLecture" resultType="boolean">
+        select count(*)
+          from lecture_info
+          where lectureNo = #{lectureNo}
+            and lectureState = 1
+    </select>
+
+    <select id="checkUserLecture" resultType="boolean">
+        select count(*)
+          from user_lecture
+          where userNo = #{userNo}
+            and lectureNo = #{lectureNo}
+    </select>
+
+    <update id="studentCountUp">
+        update lecture_info set lectureStudentCount = lectureStudentCount + 1 where lectureNo = #{lectureNo}
+    </update>
+
+    <insert id="enrollLecture" parameterType="hashmap">
+        insert into user_lecture (userNo, lectureNo)
+        values (#{userNo}, #{lectureNo})
+    </insert>
 </mapper>

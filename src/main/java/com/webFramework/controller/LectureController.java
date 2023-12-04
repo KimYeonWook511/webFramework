@@ -1,6 +1,7 @@
 package com.webFramework.controller;
 
 import com.webFramework.domain.LectureVO;
+import com.webFramework.domain.UserVO;
 import com.webFramework.service.LectureService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 @Controller
@@ -24,7 +30,7 @@ public class LectureController {
     LectureService lectureService;
 
     @RequestMapping(value = "/info/{lectureName}", method = RequestMethod.GET)
-    public String mainLectureGET(@PathVariable String lectureName, Model model) {
+    public String mainLectureGET(@PathVariable String lectureName, Model model, HttpSession session) {
         logger.info("mainLectureGET 실행");
 
         try {
@@ -45,5 +51,52 @@ public class LectureController {
         }
 
         return "/lecture/info";
+    }
+
+    @RequestMapping(value = "/enrollLecture", method = RequestMethod.POST)
+    public String enrollLecturePOST(int lectureNo, String lectureName, HttpServletResponse response, HttpSession session) {
+        logger.info("enrollLecturePOST 실행");
+
+        response.setContentType("text/html; charset=utf-8");
+
+        try {
+            PrintWriter out = response.getWriter();
+
+            if (!lectureService.checkLecture(lectureNo)) {
+                // 올바르지 않은 처리
+                out.println("<script>alert('존재하지 않는 강의입니다.');location.href='/lectures'</script>");
+                out.flush();
+                out.close();
+            }
+
+            UserVO loginVO = (UserVO)session.getAttribute("loginVO");
+
+            if (loginVO == null) {
+                // 현재 로그인 상태가 아님
+                out.println("<script>alert('현재 로그인 상태가 아닙니다.');location.href='/user/login'</script>");
+                out.flush();
+                out.close();
+
+            } else if (lectureService.checkUserLecture(loginVO.getUserNo(), lectureNo)) {
+                // 현재 수강중인 강의
+                out.println("<script>alert('이미 수강 중인 강의입니다.');history.go(-1);</script>");
+                out.flush();
+                out.close();
+
+            } else {
+                lectureService.enrollLecture(loginVO.getUserNo(), lectureNo);
+                lectureService.studentCountUp(lectureNo); // 수강생 수 추가
+
+                out.println("<script>alert('수강 신청이 완료되었습니다.');location.href='/lecture/info/" + lectureName + "';</script>");
+                out.flush();
+                out.close();
+            }
+
+            return "out.flush() 됨";
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            return "exception 처리";
+        }
     }
 }

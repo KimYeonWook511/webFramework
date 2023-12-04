@@ -27,4 +27,24 @@ public class LectureServiceImpl implements LectureService {
 
         return mapLecture;
     }
+
+    @Override
+    public boolean checkLecture(int lectureNo) throws Exception {
+        return lectureDAO.checkLecture(lectureNo);
+    }
+
+    @Override
+    public boolean checkUserLecture(int userNo, int lectureNo) throws Exception {
+        return lectureDAO.checkUserLecture(userNo, lectureNo);
+    }
+
+    @Override
+    public void studentCountUp(int lectureNo) throws Exception {
+        lectureDAO.studentCountUp(lectureNo);
+    }
+
+    @Override
+    public void enrollLecture(int userNo, int lectureNo) throws Exception {
+        lectureDAO.enrollLecture(userNo, lectureNo);
+    }
 }
