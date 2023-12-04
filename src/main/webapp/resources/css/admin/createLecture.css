@@ -1,0 +1,149 @@
+.container-header {
+    max-width: calc(100% - 300px);
+    margin: 0 auto;
+    padding: 50px 0;
+    font-weight: 700;
+    font-size: 30px;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+}
+
+.container {
+    max-width: calc(100% - 300px);
+    display: grid;
+    grid-template-rows: auto 500px;
+    column-gap: 20px;
+    row-gap: 30px;
+    margin: 0 auto;
+}
+
+.lecture {
+    display: grid;
+    grid-template-areas: "lecture-info"
+                         "lecture-hierarchy"
+                         "lecture-submit";
+    grid-template-rows: auto auto 50px;
+    row-gap: 30px;
+    /*padding: 50px 0;*/
+}
+
+.lecture-info {
+    display: grid;
+    grid-template-areas: "lecture-teacher"
+                         "lecture-name"
+                         "lecture-content";
+    grid-template-rows: 80px 80px 400px;
+    row-gap: 10px;
+}
+
+.teacher-data {
+    display: grid;
+    grid-template-areas: "teacher-id teacher-btn";
+    grid-template-columns: auto 60px;
+    column-gap: 10px;
+}
+
+.lecture-hierarchy {
+    display: grid;
+    grid-template-areas: "lecture-select"
+                         "lecture-course"
+                         "lecture-category"
+                         "lecture-skill"
+                         "lecture-add";
+    row-gap: 10px;
+}
+
+.lecture-submit {
+    padding-top: 20px;
+}
+
+.lecture-submit > input {
+    height: 50px;
+}
+
+.lecture-select {
+    display: grid;
+    grid-template-areas: "select-title"
+                         "select-data";
+    grid-template-rows: 60px auto;
+}
+
+.select-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.select-data > label {
+    margin: 8px 4px;
+}
+
+.lecture-course {
+    display: grid;
+    grid-template-areas: "course-title"
+                         "course-data";
+    grid-template-rows: 60px auto;
+}
+
+.course-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.course-data > label {
+    margin: 8px 4px;
+}
+
+.lecture-category {
+    display: none;
+    grid-template-areas: "category-title"
+                         "category-data";
+    grid-template-rows: 60px auto;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.category-data > label {
+    margin: 8px 4px;
+}
+
+.lecture-skill {
+    display: none;
+    grid-template-areas: "skill-title"
+                         "skill-data";
+    grid-template-rows: 60px auto;
+}
+
+.skill-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.skill-data > label {
+    margin: 8px 4px;
+}
+
+.lecture-add {
+    display: none;
+    padding-top: 25px;
+}
+
+.lecture-add > input {
+    height: 45px;
+}
+
+.lecture-select {
+    margin-top: 15px;
+    border-style: solid;
+}
