@@ -1,20 +1,13 @@
 package com.webFramework.interceptor;
 
 import com.webFramework.domain.UserVO;
-import com.webFramework.service.LecturesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class AdminInterceptor extends HandlerInterceptorAdapter {
     private static final Logger logger = LoggerFactory.getLogger(AdminInterceptor.class);
@@ -23,6 +16,15 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
         logger.info("AdminInterceptor preHandle 실행");
+
+        String prerender = request.getHeader("Sec-Purpose");
+        System.out.println("prerender: " + prerender);
+
+        if (prerender != null && prerender.equals("prefetch;prerender")) {
+            System.out.println("사전 렌더링 감지 -> (404 오류 코드 반환)");
+            response.setStatus(404);
+            return false;
+        }
 
         UserVO loginVO = (UserVO)request.getSession().getAttribute("loginVO");
 
