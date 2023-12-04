@@ -18,7 +18,7 @@
         </div>
         <div class="container">
             <c:forEach items="${lectureList}" var="lectureVO">
-                <a class="lecture" href="/lecture/${lectureVO.lectureName}">
+                <a class="lecture" href="/lecture/info/${lectureVO.lectureName}">
                     <div class="lecture-img">강의번호: ${lectureVO.lectureNo}</div>
                     <div class="lecture-title">강의제목: ${lectureVO.lectureName}</div>
                     <div class="lecture-sub1">강사이름: ${mapTeacher.get(lectureVO.lectureTeacherNo).userName}(${lectureVO.lectureTeacherNo})</div>

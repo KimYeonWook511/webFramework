@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
 import java.util.Map;
@@ -21,7 +23,7 @@ public class LectureController {
     @Inject
     LectureService lectureService;
 
-    @RequestMapping(value = "/{lectureName}")
+    @RequestMapping(value = "/info/{lectureName}", method = RequestMethod.GET)
     public String mainLectureGET(@PathVariable String lectureName, Model model) {
         logger.info("mainLectureGET 실행");
 
@@ -30,7 +32,8 @@ public class LectureController {
 
             if (mapLecture.get("lectureVO") == null) {
                 logger.info("페이지 찾을 수 없음"); // lectureName에 해당되는 강의 존재하지 않음
-                return "exception 처리";
+//                return "exception 처리";
+                return "redirect:/lectures";
             }
 
             model.addAttribute("lectureVO", mapLecture.get("lectureVO"));
@@ -41,6 +44,6 @@ public class LectureController {
             return "exception 처리";
         }
 
-        return "/lecture/main";
+        return "/lecture/info";
     }
 }
