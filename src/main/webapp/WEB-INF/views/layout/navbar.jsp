@@ -57,6 +57,7 @@
                         <li><a href="/admin/createMaster?master=course">대분류생성</a></li>
                         <li><a href="/admin/createMaster?master=category">중분류생성</a></li>
                         <li><a href="/admin/createMaster?master=skill">소분류생성</a></li>
+                        <li><a href="/admin/createLecture">강의등록</a></li>
                     </ul>
                 </li>
             </c:if>
